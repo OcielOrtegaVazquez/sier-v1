@@ -1,0 +1,60 @@
+/* Reset de los margenes de html */
+
+body {
+    min-height: 100%;
+}
+
+.grid-container-sesion>* {
+    box-shadow: -1px 1px 7px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+}
+
+.grid-container-sesion {
+    display: grid;
+    gap: 10px;
+    grid-template-areas: "logo" "header" "user" "navbar " "main " "footer";
+}
+
+.grid-container-sesion-logo {
+    grid-area: logo;
+    background-color: lightcoral;
+}
+
+.grid-container-sesion-user {
+    grid-area: user;
+    background-color: lightgreen;
+}
+
+.grid-container-sesion-header {
+    grid-area: header;
+    background-color: lightpink;
+}
+
+.grid-container-sesion-navbar {
+    grid-area: navbar;
+    background-color: lightsalmon;
+}
+
+.grid-container-sesion-main {
+    grid-area: main;
+    background-color: lightseagreen;
+}
+
+.grid-container-sesion-footer {
+    grid-area: footer;
+    background-color: lightslategray;
+}
+
+@media (min-width: 600px) {
+    .grid-container-sesion {
+        grid-template: "logo header user " 50% "navbar main main" auto "footer footer footer" 25%;
+    }
+}
+
+@media (min-width: 900px) {
+    .grid-container-sesion {
+        grid-template: "logo header user " 10% "navbar main main" auto "footer footer footer" 10% / 15% auto 10%;
+    }
+}

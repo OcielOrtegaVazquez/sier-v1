@@ -1,0 +1,26 @@
+<div *ngIf="isLoggedIn() ; else notLogin ">
+    <button type="button" class="btn btn-light" (click)="logout() " *ngIf="isLoggedIn() ">Cerrar Sesión</button>
+    <a routerLink="restricted-page">Restricted</a>
+    <button (click)="callProfile()">Profile</button>
+    <button (click)="callMessages()">Emails</button>
+    <tr>API Response: {{ apiResponse }}</tr>
+</div>
+
+<ng-template #notLogin>
+    <button type="button" class="btn btn-light" (click)="login() " *ngIf="!isLoggedIn() ">Iniciar Sesión</button>
+
+</ng-template>
+
+<router-outlet></router-outlet>
+
+<!-- <body class="grid-container-sesion">
+    <header class="grid-container-sesion-logo">LOGO</header>
+    <header class="grid-container-sesion-header">HEADER</header>
+    <header class="grid-container-sesion-user-">USER</header>
+    <nav class="grid-container-sesion-navbar">NAVBAR</nav>
+    <article class="grid-container-sesion-main">MAIN</article>
+    <footer class="grid-container-sesion-footer">FOOTER
+        <button type="button" class="btn btn-light" (click)="login() " *ngIf="!isLoggedIn() ">Iniciar Sesión</button>
+    </footer>
+
+</body> -->
