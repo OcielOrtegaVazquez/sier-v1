@@ -4,23 +4,78 @@
     <button (click)="callProfile()">Profile</button>
     <button (click)="callMessages()">Emails</button>
     <tr>API Response: {{ apiResponse }}</tr>
+
+    <!-- Container Grid Sesion -->
+
+    <body class="grid-container-sesion">
+
+        <header class="grid-container-sesion-logo">
+            <img src="../assets/img/logoFgrHorizontal.png" width="100%" class="fade-in-logo">
+        </header>
+        <header class="grid-container-sesion-header">
+            <h1>S I S T E M A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I N S T I T U C I O N A L</h1>
+            <h1>D E&nbsp;&nbsp;&nbsp;E V A L U A C I Ó N&nbsp;&nbsp;&nbsp;D E</h1>
+            <H1>R E S U L T A D O S</H1>
+        </header>
+        <header class="grid-container-sesion-user-">
+            <mat-card class="mat-card-sesion">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title class="mat-card-sesion-title">{{getName()}}</mat-card-title>
+                    <mat-card-subtitle>S I E R</mat-card-subtitle>
+                </mat-card-header>
+
+                <button mat-raised-button color="primary" type="button" class="btn btn-light" (click)="logout() " *ngIf="isLoggedIn() ">Cerrar Sesión</button>
+
+            </mat-card>
+
+        </header>
+        <nav class="grid-container-sesion-navbar">NAVBAR</nav>
+        <article class="grid-container-sesion-main">MAIN</article>
+        <footer class="grid-container-sesion-footer">FOOTER
+            <button type="button" class="btn btn-light" (click)="login() " *ngIf="!isLoggedIn() ">Iniciar Sesión</button>
+        </footer>
+
+    </body>
 </div>
 
 <ng-template #notLogin>
-    <button type="button" class="btn btn-light" (click)="login() " *ngIf="!isLoggedIn() ">Iniciar Sesión</button>
+
+    <!-- Container Grid Login -->
+
+    <body class="grid-container-login">
+
+        <!-- Header Logo FGR -->
+        <header class="grid-container-login-header">
+            <img src="../assets/img/logoFgrHorizontal.png" width="35%" class="fade-in-logo">
+        </header>
+
+        <!-- Seccion Area COPLADII -->
+        <section class="grid-container-login-section">
+            <div class="container">
+                <div class="box">
+                    <div class="title">
+                        <span class="block"></span>
+                        <h1>C O P L A D I I<span></span></h1>
+                    </div>
+                    <div class="role">
+                        <div class="block"></div>
+                        <p>S A M - S I E R</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Boton Inicio de Sesión -->
+        <footer class="grid-container-login-footer">
+            <button mat-raised-button color="primary" (click)="login() " *ngIf="!isLoggedIn()">Iniciar Sesión</button>
+            <!-- <button type="button" class="btn btn-light" (click)="logout() " *ngIf="isLoggedIn() ">Cerrar Sesión</button>
+            <td><a [routerLink]="[ '/public-page'] " routerLinkActive="true ">[PUBLIC-PAGE]</a></td>
+            <td><a [routerLink]="[ '/restricted-page'] " routerLinkActive="true " *ngIf="isLoggedIn() ">[RESTRICTED-PAGE]</a></td> -->
+        </footer>
+
+    </body>
 
 </ng-template>
 
 <router-outlet></router-outlet>
-
-<!-- <body class="grid-container-sesion">
-    <header class="grid-container-sesion-logo">LOGO</header>
-    <header class="grid-container-sesion-header">HEADER</header>
-    <header class="grid-container-sesion-user-">USER</header>
-    <nav class="grid-container-sesion-navbar">NAVBAR</nav>
-    <article class="grid-container-sesion-main">MAIN</article>
-    <footer class="grid-container-sesion-footer">FOOTER
-        <button type="button" class="btn btn-light" (click)="login() " *ngIf="!isLoggedIn() ">Iniciar Sesión</button>
-    </footer>
-
-</body> -->

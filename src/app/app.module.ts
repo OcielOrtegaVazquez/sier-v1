@@ -9,10 +9,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MsalModule, MsalService, MSAL_INSTANCE } from '@azure/msal-angular';
 import { IPublicClientApplication, PublicClientApplication } from '@azure/msal-browser';
 
-
 //Material
 
-import { MatGridListModule } from '@angular/material/grid-list'; 
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 //importaciones para Interceptor
 
@@ -59,7 +60,10 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     AppRoutingModule,
     BrowserAnimationsModule,
     MsalModule,
-    HttpClientModule
+    HttpClientModule,
+    MatGridListModule,
+    MatButtonModule,
+    MatCardModule
   ],
   providers: [
     {

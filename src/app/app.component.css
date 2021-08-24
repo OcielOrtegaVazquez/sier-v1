@@ -1,5 +1,51 @@
 /* Reset de los margenes de html */
 
+
+/* Grid Para Login */
+
+body {
+    min-height: 100%;
+}
+
+.grid-container-login>* {
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+}
+
+.grid-container-login {
+    display: grid;
+    gap: 10px;
+    grid-template: "header" 10% "section" auto "footer" 10%;
+}
+
+.grid-container-login-header {
+    grid-area: header;
+}
+
+.grid-container-login-section {
+    grid-area: section;
+}
+
+.grid-container-login-footer {
+    grid-area: footer;
+}
+
+@media (min-width: 600px) {
+    .grid-container-login {
+        grid-template: "header" 10% "section" auto "footer" 10%;
+    }
+}
+
+@media (min-width: 900px) {
+    .grid-container-login {
+        grid-template: "header" 10% "section" auto "footer" 10%;
+    }
+}
+
+
+/* Grid Para Sesión de Usuario */
+
 body {
     min-height: 100%;
 }
@@ -19,17 +65,14 @@ body {
 
 .grid-container-sesion-logo {
     grid-area: logo;
-    background-color: lightcoral;
 }
 
 .grid-container-sesion-user {
     grid-area: user;
-    background-color: lightgreen;
 }
 
 .grid-container-sesion-header {
     grid-area: header;
-    background-color: lightpink;
 }
 
 .grid-container-sesion-navbar {
@@ -49,12 +92,35 @@ body {
 
 @media (min-width: 600px) {
     .grid-container-sesion {
-        grid-template: "logo header user " 50% "navbar main main" auto "footer footer footer" 25%;
+        grid-template: "logo header user " auto "navbar main main" auto "footer footer footer" 10% / auto auto 10%;
     }
 }
 
 @media (min-width: 900px) {
     .grid-container-sesion {
-        grid-template: "logo header user " 10% "navbar main main" auto "footer footer footer" 10% / 15% auto 10%;
+        grid-template: "logo header user " auto "navbar main main" auto "footer footer footer" 10% / 15% auto 15%;
     }
+}
+
+
+/* Card Perfil de usuario */
+
+.example-header-image {
+    background-image: url('../assets/img/user2.png');
+    background-size: cover;
+}
+
+.mat-card-sesion {
+    max-height: fit-content;
+}
+
+.mat-card-sesion-title {
+    font-size: 15px;
+}
+
+.grid-container-sesion-header>* {
+    font-size: xx-large;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
 }

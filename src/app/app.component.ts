@@ -8,6 +8,7 @@ import { AuthenticationResult } from '@azure/msal-common';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent  {
   title = 'FGR-GRID-V2';
 
@@ -66,3 +67,4 @@ export class AppComponent  {
 
 
 }
+
