@@ -77,7 +77,6 @@ body {
 
 .grid-container-sesion-navbar {
     grid-area: navbar;
-    background-color: lightsalmon;
 }
 
 .grid-container-sesion-main {

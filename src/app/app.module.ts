@@ -14,6 +14,12 @@ import { IPublicClientApplication, PublicClientApplication } from '@azure/msal-b
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+
 
 //importaciones para Interceptor
 
@@ -25,6 +31,7 @@ import { InteractionType } from '@azure/msal-browser';
 
 import { PublicPageComponent } from './public-page/public-page.component';
 import { RestrictedPageComponent } from './restricted-page/restricted-page.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 //Exportar funcion con datos de la aplicacion en portal Azure
@@ -53,7 +60,8 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
   declarations: [
     AppComponent,
     PublicPageComponent,
-    RestrictedPageComponent
+    RestrictedPageComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +71,13 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     HttpClientModule,
     MatGridListModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatGridListModule,
+    MatIconModule,
+    MatListModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatMenuModule
   ],
   providers: [
     {

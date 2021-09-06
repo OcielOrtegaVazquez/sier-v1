@@ -1,9 +1,11 @@
 <div *ngIf="isLoggedIn() ; else notLogin ">
-    <button type="button" class="btn btn-light" (click)="logout() " *ngIf="isLoggedIn() ">Cerrar Sesión</button>
+
+    <!-- Respuesta API MSAL Perfil de usuario, Captura de Correos -->
+    <!--     <button type="button" class="btn btn-light" (click)="logout() " *ngIf="isLoggedIn() ">Cerrar Sesión</button>
     <a routerLink="restricted-page">Restricted</a>
     <button (click)="callProfile()">Profile</button>
     <button (click)="callMessages()">Emails</button>
-    <tr>API Response: {{ apiResponse }}</tr>
+    <tr>API Response: {{ apiResponse }}</tr> -->
 
     <!-- Container Grid Sesion -->
 
@@ -12,12 +14,12 @@
         <header class="grid-container-sesion-logo">
             <img src="../assets/img/logoFgrHorizontal.png" width="100%" class="fade-in-logo">
         </header>
-        <header class="grid-container-sesion-header">
+        <header class="grid-container-sesion-header" class="fade-in-logo">
             <h1>S I S T E M A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I N S T I T U C I O N A L</h1>
             <h1>D E&nbsp;&nbsp;&nbsp;E V A L U A C I Ó N&nbsp;&nbsp;&nbsp;D E</h1>
             <H1>R E S U L T A D O S</H1>
         </header>
-        <header class="grid-container-sesion-user-">
+        <header class="grid-container-sesion-user-" class="fade-in-logo">
             <mat-card class="mat-card-sesion">
                 <mat-card-header>
                     <div mat-card-avatar class="example-header-image"></div>
@@ -30,7 +32,44 @@
             </mat-card>
 
         </header>
-        <nav class="grid-container-sesion-navbar">NAVBAR</nav>
+        <nav class="grid-container-sesion-navbar" class="fade-in-logo">
+            <!--  <mat-nav-list>
+                <a mat-list-item routerLink="/home">
+                    <mat-icon>home</mat-icon> <span class="nav-caption">Home</span>
+                </a>
+                <a mat-list-item routerLink="/#">
+                    <mat-icon>notes</mat-icon> <span class="nav-caption">SAM 01</span>
+                </a>
+                <a mat-list-item routerLink="/#">
+                    <mat-icon>edit</mat-icon> <span class="nav-caption">SAM 02</span>
+                </a>
+                <a mat-list-item routerLink="/#">
+                    <mat-icon>notes</mat-icon> <span class="nav-caption">SAM 03</span>
+                </a>
+                <a mat-list-item routerLink="/#">
+                    <mat-icon>notes</mat-icon> <span class="nav-caption">SAM 04</span>
+                </a>
+                <a mat-list-item routerLink="/#">
+                    <mat-icon>notes</mat-icon> <span class="nav-caption">SAM 05</span>
+                </a>
+                <a mat-list-item routerLink="/#">
+                    <mat-icon>notes</mat-icon> <span class="nav-caption">SAM 06</span>
+                </a> -->
+            <!-- <a mat-list-item routerLink="/#">
+                    <mat-icon>assignment_ind</mat-icon> <span class="nav-caption">Owner Actions</span>
+                </a>
+                <a mat-list-item routerLink="#">
+                    <mat-icon>account_balance</mat-icon><span class="nav-caption">Account Actions</span>
+                </a>
+
+                <mat-icon>notes</mat-icon>
+                <mat-icon>edit</mat-icon>
+                <mat-icon>send</mat-icon>
+                <mat-icon>mail</mat-icon> -->
+            <!--  </mat-nav-list> -->
+            <app-navbar></app-navbar>
+
+        </nav>
         <article class="grid-container-sesion-main">MAIN</article>
         <footer class="grid-container-sesion-footer">FOOTER
             <button type="button" class="btn btn-light" (click)="login() " *ngIf="!isLoggedIn() ">Iniciar Sesión</button>
