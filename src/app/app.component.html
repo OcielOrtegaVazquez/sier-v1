@@ -70,7 +70,9 @@
             <app-navbar></app-navbar>
 
         </nav>
-        <article class="grid-container-sesion-main">MAIN</article>
+        <article class="grid-container-sesion-main">MAIN
+            <router-outlet></router-outlet>
+        </article>
         <footer class="grid-container-sesion-footer">FOOTER
             <button type="button" class="btn btn-light" (click)="login() " *ngIf="!isLoggedIn() ">Iniciar Sesión</button>
         </footer>
@@ -116,5 +118,3 @@
     </body>
 
 </ng-template>
-
-<router-outlet></router-outlet>
