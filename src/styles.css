@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import "ag-grid-community/dist/styles/ag-grid.css";
+@import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 html,
 body {
     height: 100%;
@@ -111,7 +113,7 @@ body {
 
 .container .box .title h1 {
     font-family: 'Poppins';
-    color: rgb(196, 4, 4);
+    color: rgb(65, 64, 88);
     font-size: 70px;
     -webkit-animation: mainFadeIn 2s forwards;
     -o-animation: mainFadeIn 2s forwards;
@@ -165,7 +167,7 @@ body {
     opacity: 5;
     font-weight: 800;
     font-family: 'Lato';
-    color: #000000;
+    color: #fc0000;
     font-size: 20px;
     text-transform: uppercase;
     letter-spacing: 5px;

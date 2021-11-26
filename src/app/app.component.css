@@ -51,7 +51,7 @@ body {
 }
 
 .grid-container-sesion>* {
-    box-shadow: -1px 1px 7px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: -1px 1px 7px 0px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
     padding: 10px;
     text-align: center;
@@ -81,7 +81,6 @@ body {
 
 .grid-container-sesion-main {
     grid-area: main;
-    background-color: lightseagreen;
 }
 
 .grid-container-sesion-footer {
@@ -91,13 +90,13 @@ body {
 
 @media (min-width: 600px) {
     .grid-container-sesion {
-        grid-template: "logo header user " auto "navbar main main" auto "footer footer footer" 10% / auto auto 10%;
+        grid-template: "logo header user " 10% "navbar main main" 100% / 10% auto 10%;
     }
 }
 
 @media (min-width: 900px) {
     .grid-container-sesion {
-        grid-template: "logo header user " auto "navbar main main" auto "footer footer footer" 10% / 15% auto 15%;
+        grid-template: "logo header user " 15% "navbar main main" 100% / 15% auto 15%
     }
 }
 

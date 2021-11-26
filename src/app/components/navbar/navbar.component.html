@@ -1,30 +1,15 @@
 <!-- Menú Lateral -->
 <div>
     <p>
-        <button [routerLink]="[ '/public-page'] " routerLinkActive="true " mat-button>Carpetas de Investigación</button>
+        <button mat-stroked-button color="accent" [routerLink]="[ '/carpeta'] " routerLinkActive="true " mat-button>Carpetas Investigación</button>
     </p>
-
     <p>
-        <button mat-button [matMenuTriggerFor]="actosInvestigacion">Actos de Investigación</button>
-        <mat-menu #actosInvestigacion="matMenu" xPosition="after">
-            <button mat-menu-item>Internos</button>
-            <button mat-menu-item>Externos</button>
-        </mat-menu>
+        <button mat-stroked-button color="accent" [routerLink]="[ '/universo'] " routerLinkActive="true " mat-button>Universo de Carpetas</button>
     </p>
-
     <p>
         <button mat-button>Investigación de Control<br> Judicial</button>
         <a [routerLink]="[ '/public-page'] " routerLinkActive="true ">[PUBLIC-PAGE]</a>
     </p>
-
-    <p>
-        <button mat-button [matMenuTriggerFor]="audienciaInicial">Audiciencia Inicial</button>
-        <mat-menu #audienciaInicial="matMenu" xPosition="after">
-            <button mat-menu-item>Con Detenido</button>
-            <button mat-menu-item>Sin Detenido</button>
-        </mat-menu>
-    </p>
-
     <p>
         <button mat-button>Mandamiento Judicial</button>
     </p>
@@ -41,11 +26,4 @@
         <button mat-button>Etapa Intermedia</button>
     </p>
 
-    <p>
-        <button mat-button [matMenuTriggerFor]="sentencia">Sentencia</button>
-        <mat-menu #sentencia="matMenu" xPosition="after">
-            <button mat-menu-item>Procedimiento Abreviado</button>
-            <button mat-menu-item>Procedimiento Ordinario</button>
-        </mat-menu>
-    </p>
 </div>

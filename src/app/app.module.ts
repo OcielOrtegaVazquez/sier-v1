@@ -3,13 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
-//Importaciones de instancias
+/* Importamos las instancias */
 
 import { MsalModule, MsalService, MSAL_INSTANCE } from '@azure/msal-angular';
 import { IPublicClientApplication, PublicClientApplication } from '@azure/msal-browser';
 
-//Material
+/* Importamos los modulos de material */
 
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
@@ -19,33 +20,47 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSelectModule } from '@angular/material/select';
 
-
-//importaciones para Interceptor
+/* Importacion para interceptor */
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MsalInterceptor, MsalInterceptorConfiguration, MSAL_INTERCEPTOR_CONFIG } from '@azure/msal-angular';
 import { InteractionType } from '@azure/msal-browser';
 
-//Componentes
+/* Componentes */
 
 import { PublicPageComponent } from './public-page/public-page.component';
 import { RestrictedPageComponent } from './restricted-page/restricted-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { CarpetaInvestigacionComponent } from './components/carpeta-investigacion/carpeta-investigacion.component';
+import { CarpetasUniversoComponent } from './components/carpetas-universo/carpetas-universo.component';
+
+/* Material Data Grid */
+
+import { AngularMaterialDataGridModule } from 'angular-material-data-grid';
+import { AgGridModule } from 'ag-grid-angular';
 
 
-//Exportar funcion con datos de la aplicacion en portal Azure
+/* Exportar funcion con datos de la aplicacion en portal Azure */
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
     auth: {
       clientId: 'bc69e1de-d8a4-4a6b-a673-b2bf7c8fe2c4',
       authority: "https://login.microsoftonline.com/pgr.gob.mx/",
-      redirectUri: 'http://localhost:4200'
+      redirectUri: 'http://localhost/sier'
     }
   });
 }
 
-//Exportar funcion para Interceptor
+/* Exportar funcion para Interceptor */
 export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
   const protectedResourceMap = new Map<string, Array<string>>();
   protectedResourceMap.set('https://graph.microsoft.com/v1.0/me', ['user.read', 'mail.read']);
@@ -62,11 +77,14 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     PublicPageComponent,
     RestrictedPageComponent,
     NavbarComponent,
+    CarpetaInvestigacionComponent,
+    CarpetasUniversoComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     MsalModule,
     HttpClientModule,
     MatGridListModule,
@@ -77,7 +95,17 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     MatListModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatPaginatorModule,
+    MatExpansionModule,
+    MatSortModule,
+    MatSelectModule,
+    AngularMaterialDataGridModule,
+    ReactiveFormsModule,
+    AgGridModule.withComponents([])
   ],
   providers: [
     {
