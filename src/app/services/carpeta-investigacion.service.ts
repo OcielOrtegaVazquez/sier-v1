@@ -6,9 +6,6 @@ import { HttpClient } from '@angular/common/http';
 /* Importamos la Interfaz de la Carpeta de Investigacion */
 import { CarpetaInvestigacion } from '../interfaces/carpeta-investigacion';
 
-/* Importamos URL API */
-import { environment } from '../../environments/environment';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +13,8 @@ export class CarpetaInvestigacionService {
 
   /* private api = 'http://localhost:8090/api/'; */
 
-  private api = `${environment.api}`;
+
+  private api : 'http://localhost:8090/api/'
 
   constructor(
     private http: HttpClient

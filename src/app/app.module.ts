@@ -53,9 +53,9 @@ import { AgGridModule } from 'ag-grid-angular';
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
     auth: {
-      clientId: 'bc69e1de-d8a4-4a6b-a673-b2bf7c8fe2c4',
+      clientId: '99d8d763-a0db-46ed-ac60-b09724e570e5',
       authority: "https://login.microsoftonline.com/pgr.gob.mx/",
-      redirectUri: 'http://localhost/sier'
+      redirectUri: 'http://localhost:4200'
     }
   });
 }

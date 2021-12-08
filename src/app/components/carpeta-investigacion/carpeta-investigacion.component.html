@@ -1,9 +1,9 @@
 <h1>Carpetas de Investigación</h1>
 
-<!-- <mat-form-field appearance="fill">
+<mat-form-field appearance="fill">
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilterCarpeta($event)" placeholder="Ex. ium" #input>
-</mat-form-field> -->
+</mat-form-field>
 
 <table mat-table [dataSource]="dataSourceCarpeta" class="mat-elevation-z8" matSort>
 
@@ -15,12 +15,7 @@
 
     <!-- Numero de Carpeta Column -->
     <ng-container matColumnDef="NUM_CARPETA_INVESTIGACION">
-        <th class="header" mat-header-cell *matHeaderCellDef> Núm. Carpeta
-            <mat-form-field class="filter" floatLabel="never">
-                <mat-label>Search</mat-label>
-                <input matInput [formControl]="numCarpetaInvestigacionFilter">
-            </mat-form-field>
-        </th>
+        <th class="header" mat-header-cell *matHeaderCellDef> Núm. Carpeta </th>
         <td mat-cell *matCellDef="let element"> {{element.NUM_CARPETA_INVESTIGACION}} </td>
     </ng-container>
 
@@ -38,23 +33,13 @@
 
     <!-- Sintesis Column -->
     <ng-container matColumnDef="SINTESIS">
-        <th class="header" mat-header-cell *matHeaderCellDef> Síntesis
-            <mat-form-field class="filter" floatLabel="never">
-                <mat-label>Search</mat-label>
-                <input matInput [formControl]="sintesisFilter">
-            </mat-form-field>
-        </th>
+        <th class="header" mat-header-cell *matHeaderCellDef> Síntesis</th>
         <td mat-cell *matCellDef="let element"> {{element.SINTESIS}} </td>
     </ng-container>
 
     <!-- Delegacion Column -->
     <ng-container matColumnDef="DELEGACION">
-        <th class="header" mat-header-cell *matHeaderCellDef> Delegación
-            <mat-form-field class="filter" floatLabel="never">
-                <mat-label>Search</mat-label>
-                <input matInput [formControl]="delegacionFilter">
-            </mat-form-field>
-        </th>
+        <th class="header" mat-header-cell *matHeaderCellDef> Delegación</th>
         <td mat-cell *matCellDef="let element"> {{element.DELEGACION}} </td>
     </ng-container>
 
@@ -67,10 +52,9 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumnsCarpeta"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumnsCarpeta;"></tr>
 
-    <!--   <tr class="mat-row" *matNoDataRow>
+    <tr class="mat-row" *matNoDataRow>
         <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-    </tr> -->
-
+    </tr>
 </table>
 
 <mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons aria-label="Seleciona La Página"></mat-paginator>
