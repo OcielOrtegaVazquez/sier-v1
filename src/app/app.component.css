@@ -1,10 +1,17 @@
-/* Reset de los margenes de html */
-
-
 /* Grid Para Login */
 
 body {
-    min-height: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#main {
+    box-shadow: -1px 1px 7px 0px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    text-align: center;
+    margin-right: auto;
 }
 
 .grid-container-login>* {
@@ -45,17 +52,6 @@ body {
 
 
 /* Grid Para Sesión de Usuario */
-
-body {
-    min-height: 100%;
-}
-
-.grid-container-sesion>* {
-    box-shadow: -1px 1px 7px 0px rgba(0, 0, 0, 0.15);
-    border-radius: 5px;
-    padding: 10px;
-    text-align: center;
-}
 
 .grid-container-sesion {
     display: grid;

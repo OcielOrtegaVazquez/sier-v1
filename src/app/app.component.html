@@ -9,7 +9,7 @@
 
     <!-- Container Grid Sesion -->
 
-    <body class="grid-container-sesion">
+    <!-- <body class="grid-container-sesion">
 
         <header class="grid-container-sesion-logo">
             <img src="../assets/img/logoFgrHorizontal.png" width="100%" class="fade-in-logo">
@@ -31,8 +31,8 @@
             </mat-card>
 
         </header>
-        <nav class="grid-container-sesion-navbar" class="fade-in-logo">
-            <!--  <mat-nav-list>
+        <nav class="grid-container-sesion-navbar" class="fade-in-logo"> -->
+    <!--  <mat-nav-list>
                 <a mat-list-item routerLink="/home">
                     <mat-icon>home</mat-icon> <span class="nav-caption">Home</span>
                 </a>
@@ -54,7 +54,7 @@
                 <a mat-list-item routerLink="/#">
                     <mat-icon>notes</mat-icon> <span class="nav-caption">SAM 06</span>
                 </a> -->
-            <!-- <a mat-list-item routerLink="/#">
+    <!-- <a mat-list-item routerLink="/#">
                     <mat-icon>assignment_ind</mat-icon> <span class="nav-caption">Owner Actions</span>
                 </a>
                 <a mat-list-item routerLink="#">
@@ -65,19 +65,78 @@
                 <mat-icon>edit</mat-icon>
                 <mat-icon>send</mat-icon>
                 <mat-icon>mail</mat-icon> -->
-            <!--  </mat-nav-list> -->
-            <app-navbar></app-navbar>
+    <!--  </mat-nav-list> -->
+    <!-- <app-navbar></app-navbar>
 
         </nav>
         <article class="grid-container-sesion-main" class="fade-in-logo" style="width: 120%;">
             <router-outlet></router-outlet>
-        </article>
-        <!-- <footer class="grid-container-sesion-footer">FOOTER
+        </article> -->
+    <!-- <footer class="grid-container-sesion-footer">FOOTER
             <button type="button" class="btn btn-light" (click)="login() " *ngIf="!isLoggedIn() ">Iniciar Sesión</button>
         </footer> -->
 
+    <!-- </body> -->
+
+    <body id="main">
+        <div class="container-fluid">
+            <app-header></app-header>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-2">
+                    <app-navbar [nombreUsuario]="getName()" (cerrarSesion)="logout()"></app-navbar>
+                </div>
+                <div class="col-xs-6 col-md-10">Main</div>
+
+                <!-- Código opcional para limpiar las columnas XS en caso de que el
+             contenido de todas las columnas no coincida en altura -->
+                <!-- <div class="clearfix visible-xs"></div>
+            <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div> -->
+                <router-outlet></router-outlet>
+            </div>
+
+        </div>
     </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
+
+
+
+
+
+
+
+
+
+
 
 <ng-template #notLogin>
 

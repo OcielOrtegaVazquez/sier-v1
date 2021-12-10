@@ -1,11 +1,51 @@
 <!-- Menú Lateral -->
-<div>
-    <!-- <p>
+<!-- <div>
+    <p>
         <button mat-stroked-button color="accent" [routerLink]="[ '/carpeta'] " routerLinkActive="true " mat-button>Carpetas Investigación</button>
     </p>
     <p>
         <button mat-stroked-button color="accent" [routerLink]="[ '/universo'] " routerLinkActive="true " mat-button>Universo de Carpetas</button>
     </p>
- -->
 
-</div>
+    <button class="btn btn-danger">universo</button>
+
+
+</div> -->
+
+
+<div id="sidemenu">
+    <!-- header -->
+    <div id="header-navbar" class="text-center">
+        <div id="title-navbar"><span><strong>Bienvenido</strong></span></div>
+    </div>
+
+    <!-- profile -->
+    <div id="profile" class="text-center">
+        <div id="photo"><img src="../../../assets/img/user2.png" width="50%" alt=""></div>
+        <div id="name">
+            <h3>{{nombreUsuario}}</h3>
+            <button type="button" class="btn btn-danger" (click)="logout()">Cerrar Sesión</button>
+        </div>
+        <hr style="color: black; size: 15px;">
+    </div>
+
+
+
+    <!-- items -->
+    <div id="menu-items">
+        <div class="row">
+            <ul class="nav navbar-nav" id="menu-navbar">
+                <li class="nav-item">
+                    <button type="button" class="btn btn-primary">Universo Carpetas</button>
+                </li>
+                <br>
+                <li class="nav-item">
+                    <button type="button" class="btn btn-primary">Carpetas</button>
+                </li>
+                <br>
+                <li class="nav-item">
+                    <button type="button" class="btn btn-primary">Registros</button>
+                </li>
+            </ul>
+        </div>
+    </div>

@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MsalService } from '@azure/msal-angular';
 import { HttpClient } from '@angular/common/http';
 import { AuthenticationResult } from '@azure/msal-common';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +11,12 @@ import { AuthenticationResult } from '@azure/msal-common';
 })
 
 export class AppComponent  {
+
   title = 'FGR-GRID-V2';
 
   apiResponse: string;
 
   constructor(private authService: MsalService, private http: HttpClient) {
-
   }
   ngOnInit(): void {
     this.authService.instance.handleRedirectPromise().then( res => {
@@ -23,6 +24,8 @@ export class AppComponent  {
         this.authService.instance.setActiveAccount(res.account)
       }
     })
+
+    this.getName();
   }
 
   isLoggedIn(): boolean {
@@ -48,7 +51,7 @@ export class AppComponent  {
   } 
 
   logout() {
-    this.authService.logout()
+      this.authService.logout()
   }
 
   callProfile() {

@@ -46,8 +46,7 @@ import { CarpetasUniversoComponent } from './components/carpetas-universo/carpet
 /* Material Data Grid */
 
 import { AngularMaterialDataGridModule } from 'angular-material-data-grid';
-import { AgGridModule } from 'ag-grid-angular';
-
+import { HeaderComponent } from './components/header/header.component';
 
 /* Exportar funcion con datos de la aplicacion en portal Azure */
 export function MSALInstanceFactory(): IPublicClientApplication {
@@ -79,6 +78,7 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     NavbarComponent,
     CarpetaInvestigacionComponent,
     CarpetasUniversoComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -104,8 +104,7 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     MatSortModule,
     MatSelectModule,
     AngularMaterialDataGridModule,
-    ReactiveFormsModule,
-    AgGridModule.withComponents([])
+    ReactiveFormsModule
   ],
   providers: [
     {
