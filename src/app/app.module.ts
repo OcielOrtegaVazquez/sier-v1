@@ -48,6 +48,10 @@ import { CarpetasUniversoComponent } from './components/carpetas-universo/carpet
 import { AngularMaterialDataGridModule } from 'angular-material-data-grid';
 import { HeaderComponent } from './components/header/header.component';
 
+/* Libreria PrimeNg */
+import { PanelMenuModule } from 'primeng/panelmenu';
+import { MenuItem } from 'primeng/api';
+
 /* Exportar funcion con datos de la aplicacion en portal Azure */
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
@@ -104,7 +108,8 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     MatSortModule,
     MatSelectModule,
     AngularMaterialDataGridModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PanelMenuModule
   ],
   providers: [
     {

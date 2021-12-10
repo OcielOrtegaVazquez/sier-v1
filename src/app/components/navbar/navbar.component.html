@@ -1,17 +1,4 @@
 <!-- Menú Lateral -->
-<!-- <div>
-    <p>
-        <button mat-stroked-button color="accent" [routerLink]="[ '/carpeta'] " routerLinkActive="true " mat-button>Carpetas Investigación</button>
-    </p>
-    <p>
-        <button mat-stroked-button color="accent" [routerLink]="[ '/universo'] " routerLinkActive="true " mat-button>Universo de Carpetas</button>
-    </p>
-
-    <button class="btn btn-danger">universo</button>
-
-
-</div> -->
-
 
 <div id="sidemenu">
     <!-- header -->
@@ -29,23 +16,9 @@
         <hr style="color: black; size: 15px;">
     </div>
 
-
-
     <!-- items -->
     <div id="menu-items">
         <div class="row">
-            <ul class="nav navbar-nav" id="menu-navbar">
-                <li class="nav-item">
-                    <button type="button" class="btn btn-primary">Universo Carpetas</button>
-                </li>
-                <br>
-                <li class="nav-item">
-                    <button type="button" class="btn btn-primary">Carpetas</button>
-                </li>
-                <br>
-                <li class="nav-item">
-                    <button type="button" class="btn btn-primary">Registros</button>
-                </li>
-            </ul>
+            <p-panelMenu [model]="items" [style]="{'width':'160px'}"></p-panelMenu>
         </div>
     </div>
