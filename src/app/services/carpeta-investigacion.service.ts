@@ -13,32 +13,29 @@ export class CarpetaInvestigacionService {
 
   /* private api = 'http://localhost:8090/api/'; //desarrollo */
 
-  private api : 'http://localhost:3000/api/'; //desarrollo en servidor
+   api = 'http://localhost:3000/'; //desarrollo en servidor
 
   constructor(
     private http: HttpClient
   ) { }
 /* Creamos la funcion que retorna el total de las carpetas 2021 */
-getCarpetas2021(){
-    
-  return this.http.get<CarpetaInvestigacion[]>('http://localhost:3000/carpetas2021');
-  const path = `${this.api}carpetas/`;
-  return this.http.get<CarpetaInvestigacion[]>(path);
+getCarpetas2021(){    
+  
+  const path = `${this.api}carpetas2021/`;
+    return this.http.get<CarpetaInvestigacion[]>(path);
 }
 
   /* Creamos la funcion que retorna el total de las carpetas 2020 */
   getCarpetas2020(){
     
-    return this.http.get<CarpetaInvestigacion[]>('http://localhost:3000/carpetas2020');
-    const path = `${this.api}carpetas/`;
+    const path = `${this.api}carpetas2020/`;
     return this.http.get<CarpetaInvestigacion[]>(path);
   }
 
    /* Creamos la funcion que retorna el total de las carpetas 2019 */
    getCarpetas2019(){
     
-    return this.http.get<CarpetaInvestigacion[]>('http://localhost:3000/carpetas2019');
-    const path = `${this.api}carpetas/`;
+    const path = `${this.api}carpetas2019/`;
     return this.http.get<CarpetaInvestigacion[]>(path);
   }
 }
