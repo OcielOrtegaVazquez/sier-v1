@@ -1,4 +1,108 @@
-<h2>Universo de Carpetas</h2>
+<div class="fade-in-logo">
+    <h2>Universo de Carpetas</h2>
 
-<!-- <ag-grid-angular id="myGrid" #agGrid style="width: 100%; height: 100%;" class="ag-theme-alpine" [rowData]="rowData | async" [columnDefs]="columnDefs" rowSelection="multiple" [enableRangeSelection]="true" [pagination]="true">
-</ag-grid-angular> -->
+    <div class="card">
+        <div class="p-d-flex">
+            <br>
+            <p-button type="button" icon="pi pi-chevron-left" (click)="prev()" [disabled]="isFirstPage()" styleClass="p-button-text"></p-button>
+            <p-button type="button" icon="pi pi-refresh" (click)="reset()" styleClass="p-button-text"></p-button>
+            <p-button type="button" icon="pi pi-chevron-right" (click)="next()" [disabled]="isLastPage()" styleClass="p-button-text"></p-button>
+
+            <button type="button" label="CSV" pButton pRipple icon="pi pi-file-o" (click)="dtCarpetas.exportCSV()" class="p-mr-2" pTooltip="CSV"></button>
+            <button type="button" label="XLSX" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class="p-button-success p-ml-3 p-mr-2" pTooltip="XLS"></button>
+            <button type="button" label="FILTRADO" pButton pRipple icon="pi pi-filter" (click)="dtCarpetas.exportCSV({selectionOnly:true})" class="p-button-info p-ml-auto" pTooltip="Selection Only" tooltipPosition="bottom"></button>
+            <br>
+            <br>
+        </div>
+
+        <p-table #dtCarpetas dataKey="idRow" [value]="carpetas" [paginator]="true" [rows]="rows" [columns]="cols" [showCurrentPageReport]="true" [(first)]="first" currentPageReportTemplate="Carpeta {first} De {last} De {totalRecords} Carpetas" [rowsPerPageOptions]="[10,25,50]"
+            [showCurrentPageReport]="true" [globalFilterFields]="['NUM_CARPETA_INVESTIGACION']" selectionMode="multiple" responsiveLayout="scroll" [(selection)]="selectedCarpetas" [totalRecords]="totalRecords" [loading]="loading">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width: 3rem">
+                        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                    </th>
+
+                    <th>
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Id Row
+                            <p-columnFilter type="number" field="idRow" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+
+                    <th>
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Número de Carpeta
+                            <p-columnFilter type="text" field="NumCar" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Fecha CI
+                            <p-columnFilter type="text" field="FechaCI" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Estado Jurídico
+                            <p-columnFilter type="text" field="EdoJur" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Ley
+                            <p-columnFilter type="text" field="Ley" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Artículo
+                            <p-columnFilter type="text" field="Articulo" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Tipo Delito
+                            <p-columnFilter type="text" field="TipoDelito" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Hecho
+                            <p-columnFilter type="text" field="Hecho" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Modalidad
+                            <p-columnFilter type="text" field="ModalidadDelito" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Incidencia
+                            <p-columnFilter type="text" field="IncidenciaDelictiva_EXP" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-carpeta let-rowData>
+                <tr [pSelectableRow]="rowData">
+                    <td>
+                        <p-tableCheckbox [value]="carpeta"></p-tableCheckbox>
+                    </td>
+                    <td>{{carpeta.idRow}}</td>
+                    <td>{{carpeta.NumCar}}</td>
+                    <td>{{carpeta.FechaCI}}</td>
+                    <td>{{carpeta.EdoJur}}</td>
+                    <td>{{carpeta.Ley}}</td>
+                    <td>{{carpeta.Articulo}}</td>
+                    <td>{{carpeta.TipoDelito}}</td>
+                    <td>{{carpeta.Hecho}}</td>
+                    <td>{{carpeta.ModalidadDelito}}</td>
+                    <td>{{carpeta.IncidenciaDelictiva_EXP}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

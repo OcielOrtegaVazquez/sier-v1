@@ -51,6 +51,10 @@ import { HeaderComponent } from './components/header/header.component';
 /* Libreria PrimeNg */
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { MenuItem } from 'primeng/api';
+import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+
 
 /* Exportar funcion con datos de la aplicacion en portal Azure */
 export function MSALInstanceFactory(): IPublicClientApplication {
@@ -83,6 +87,7 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     CarpetaInvestigacionComponent,
     CarpetasUniversoComponent,
     HeaderComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -109,7 +114,9 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     MatSelectModule,
     AngularMaterialDataGridModule,
     ReactiveFormsModule,
-    PanelMenuModule
+    PanelMenuModule,
+    ButtonModule,
+    TableModule
   ],
   providers: [
     {

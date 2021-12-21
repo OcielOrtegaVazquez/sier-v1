@@ -1,9 +1,19 @@
 export interface CarpetaInvestigacion {
-    ID_CARPETA: number;
-    NUM_CARPETA_INVESTIGACION: string;
-    FECHA_INICIO: Date;
-    HORA_INICIO: Date;
-    SINTESIS: string;
-    DELEGACION: string;
-    SEDESUBSEDE: string;
+    idRow: number,
+    NumCar: string,
+    FechaCI: Date,
+    EdoJur: number,
+    FechaJur: Date,
+    numDetenidos: number,
+    numImputados: number,
+    BienesAseg: number,
+    Ley: number,
+    Articulo: number,
+    TipoDelito: number,
+    Hecho: string,
+    ModalidadDelito: number,
+    SupuestoNEAP: number,
+    FechaNEAP: Date,
+    FechaHechos: Date,
+    IncidenciaDelictiva_EXP: string
 }

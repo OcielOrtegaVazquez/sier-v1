@@ -22,7 +22,9 @@ export class NavbarComponent implements OnInit {
           label: 'Carpetas',
           icon: 'pi pi-pw pi-folder',
           items: [
-            {label: 'Universo', icon: 'pi pi-fw pi-database',  routerLink: "/universo"},
+            {label: 'Universo 2021', icon: 'pi pi-fw pi-database',  routerLink: "/"},
+            {label: 'Universo 2020', icon: 'pi pi-fw pi-database',  routerLink: "/universo"},
+            {label: 'Universo 2019', icon: 'pi pi-fw pi-database',  routerLink: "/"},
             {label: 'Carpeta', icon: 'pi pi-fw pi-external-link', routerLink: "/carpeta"}
           ]
       },

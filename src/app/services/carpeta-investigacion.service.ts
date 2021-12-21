@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 
-/* Importamos HttCliente para hacer las peticiones HTTP */
+/* Importamos HttClient para hacer las peticiones HTTP */
 import { HttpClient } from '@angular/common/http';
 
-/* Importamos la Interfaz de la Carpeta de Investigacion */
+/* Importamos la Interfaz de la Carpeta de Investigacion con todos los atributos */
 import { CarpetaInvestigacion } from '../interfaces/carpeta-investigacion';
 
 @Injectable({
@@ -11,22 +11,19 @@ import { CarpetaInvestigacion } from '../interfaces/carpeta-investigacion';
 })
 export class CarpetaInvestigacionService {
 
-  /* private api = 'http://localhost:8090/api/'; */
+  /* private api = 'http://localhost:8090/api/'; //desarrollo */
 
-
-  private api : 'http://localhost:8090/api/'
+  private api : 'http://localhost:3000/api/'; //desarrollo en servidor
 
   constructor(
     private http: HttpClient
   ) { }
 
+  /* Creamos la funcion que retorna el total de las carpetas */
   getAllCarpetaInvestigacion(){
-    const path = `${this.api}carpeta/`;
+    
+    return this.http.get<CarpetaInvestigacion[]>('http://localhost:3000/carpetas');
+    const path = `${this.api}carpetas/`;
     return this.http.get<CarpetaInvestigacion[]>(path);
-  }
-
-  getCarpetaInvestigacion(id : number){
-    const path = `${this.api}carpeta/${id}`;
-    return this.http.get<CarpetaInvestigacion>(path);
   }
 }
