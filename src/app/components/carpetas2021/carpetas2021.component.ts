@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 /* Importamos el servicio CarpetaInvestigacion */
 import { CarpetaInvestigacionService } from '../../services/carpeta-investigacion.service';
@@ -9,69 +9,66 @@ import { CarpetaInvestigacion } from '../../interfaces/carpeta-investigacion';
 /* Importamos libreria para exportar archivos CSV y EXCEL */
 import * as FileSaver from 'file-saver';
 
-
 @Component({
-  selector: 'app-carpetas-universo',
-  templateUrl: './carpetas-universo.component.html',
-  styleUrls: ['./carpetas-universo.component.css']
+  selector: 'app-carpetas2021',
+  templateUrl: './carpetas2021.component.html',
+  styleUrls: ['./carpetas2021.component.css']
 })
-export class CarpetasUniversoComponent implements OnInit {
+export class Carpetas2021Component implements OnInit {
 
   /* declaramos una variable para el arreglo de carpetas */
- carpetas: CarpetaInvestigacion[] = [];
+  carpetas: CarpetaInvestigacion[] = [];
 
   /* declaramos una variable para el loader */
   loading: boolean;
-
+ 
   /* declaramos una variable para el arreglo de las columnas */
   cols: any[];
-
+ 
   /* declaramos las variables para el paginador */
   first = 0;
   rows = 10;
-
+ 
   /* Declaramos las variables para las filas seleccionadas */
   selectedCarpetas: any[];
   totalRecords: number = 100;
-
+ 
   /* Declaramos el arreglo para exportar las columnas en excel */
   exportColumns: any[];
+ 
+  constructor(private carpetaInvestigacionService: CarpetaInvestigacionService) { }
 
-  constructor(
-    private carpetaInvestigacionService : CarpetaInvestigacionService
-  ) {  }
+  ngOnInit(): void {
+    this.getCarpetas2021();
+  }
 
-ngOnInit(): void {
-  this.getCarpetas2020();
- }
-
- /* Creamos la funcion para hacer el llamado del universo de carpetas getCarpetas2020 */
-getCarpetas2020(){
-  this.loading = true;
-  this.carpetaInvestigacionService.getCarpetas2020()
-  .subscribe(
-    data =>{
-      this.carpetas = data;
-      this.loading = false;
-    }
-  )
-  this.cols = [
-    { field: 'idRow', header: 'idRow' },
-    { field: 'NumCar', header: 'NumCar' },
-    { field: 'FechaCI', header: 'FechaCI' },
-    { field: 'EdoJur', header: 'EdoJur' },      
-    { field: 'Ley', header: 'Ley' },
-    { field: 'Articulo', header: 'Articulo' },
-    { field: 'TipoDelito', header: 'TipoDelito' },
-    { field: 'Hecho', header: 'Hecho' },
-    { field: 'ModalidadDelito', header: 'ModalidadDelito' }
-];
-
-this.exportColumns = this.cols.map(col => ({title: col.header, dataKey: col.field}));
-
-}
-
-/* Paginador siguiente */
+/* Creamos la funcion para hacer el llamado del universo de carpetas getCarpetas2021 */
+  getCarpetas2021(){
+    this.loading = true;
+    this.carpetaInvestigacionService.getCarpetas2021()
+    .subscribe(
+      data =>{
+        this.carpetas = data;
+        this.loading = false;
+      }
+    )
+    this.cols = [
+      { field: 'idRow', header: 'idRow' },
+      { field: 'NumCar', header: 'NumCar' },
+      { field: 'FechaCI', header: 'FechaCI' },
+      { field: 'EdoJur', header: 'EdoJur' },      
+      { field: 'Ley', header: 'Ley' },
+      { field: 'Articulo', header: 'Articulo' },
+      { field: 'TipoDelito', header: 'TipoDelito' },
+      { field: 'Hecho', header: 'Hecho' },
+      { field: 'ModalidadDelito', header: 'ModalidadDelito' }
+  ];
+  
+  this.exportColumns = this.cols.map(col => ({title: col.header, dataKey: col.field}));
+  
+  }
+  
+  /* Paginador siguiente */
 next(){
   this.first = this.first + this.rows;
 }
@@ -102,7 +99,7 @@ exportExcel() {
       const worksheet = xlsx.utils.json_to_sheet(this.carpetas);
       const workbook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
       const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
-      this.saveAsExcelFile(excelBuffer, "Universo_Carpetas_2020");
+      this.saveAsExcelFile(excelBuffer, "Universo_Carpetas_2019");
   });
 }
 

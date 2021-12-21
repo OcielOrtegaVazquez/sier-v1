@@ -54,6 +54,8 @@ import { MenuItem } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { Carpetas2019Component } from './components/carpetas2019/carpetas2019.component';
+import { Carpetas2021Component } from './components/carpetas2021/carpetas2021.component';
 
 
 /* Exportar funcion con datos de la aplicacion en portal Azure */
@@ -87,7 +89,9 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     CarpetaInvestigacionComponent,
     CarpetasUniversoComponent,
     HeaderComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    Carpetas2019Component,
+    Carpetas2021Component
   ],
   imports: [
     BrowserModule,

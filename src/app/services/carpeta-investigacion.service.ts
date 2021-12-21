@@ -18,11 +18,26 @@ export class CarpetaInvestigacionService {
   constructor(
     private http: HttpClient
   ) { }
-
-  /* Creamos la funcion que retorna el total de las carpetas */
-  getAllCarpetaInvestigacion(){
+/* Creamos la funcion que retorna el total de las carpetas 2021 */
+getCarpetas2021(){
     
-    return this.http.get<CarpetaInvestigacion[]>('http://localhost:3000/carpetas');
+  return this.http.get<CarpetaInvestigacion[]>('http://localhost:3000/carpetas2021');
+  const path = `${this.api}carpetas/`;
+  return this.http.get<CarpetaInvestigacion[]>(path);
+}
+
+  /* Creamos la funcion que retorna el total de las carpetas 2020 */
+  getCarpetas2020(){
+    
+    return this.http.get<CarpetaInvestigacion[]>('http://localhost:3000/carpetas2020');
+    const path = `${this.api}carpetas/`;
+    return this.http.get<CarpetaInvestigacion[]>(path);
+  }
+
+   /* Creamos la funcion que retorna el total de las carpetas 2019 */
+   getCarpetas2019(){
+    
+    return this.http.get<CarpetaInvestigacion[]>('http://localhost:3000/carpetas2019');
     const path = `${this.api}carpetas/`;
     return this.http.get<CarpetaInvestigacion[]>(path);
   }
