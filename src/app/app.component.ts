@@ -2,8 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { MsalService } from '@azure/msal-angular';
 import { HttpClient } from '@angular/common/http';
 import { AuthenticationResult } from '@azure/msal-common';
-import { NavbarComponent } from './components/navbar/navbar.component';
-
 
 @Component({
   selector: 'app-root',
