@@ -1,25 +1,10 @@
 <!-- Menú Lateral -->
 
 <div id="sidemenu" class="fade-in-logo">
-    <!-- header -->
-    <div id="header-navbar" class="text-center">
-        <div id="title-navbar"><span><strong>Bienvenido</strong></span></div>
-    </div>
-
-    <!-- profile -->
-    <div id="profile" class="text-center">
-        <div id="photo"><img src="../../../assets/img/user2.png" width="40%" alt=""></div>
-        <div id="name">
-            <h3>{{nombreUsuario}}</h3>
-            <button type="button" class="btn btn-danger" (click)="logout()">Cerrar Sesión</button>
-        </div>
-        <hr style="color: black; size: 15px;">
-    </div>
-
     <!-- items -->
     <div id="menu-items">
         <div class="row">
-            <p-panelMenu [model]="items" [style]="{'width':'auto'}"></p-panelMenu>
+            <p-menubar [model]="items" [style]="{'width':'auto'}"></p-menubar>
         </div>
     </div>
 </div>

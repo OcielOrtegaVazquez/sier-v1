@@ -13,7 +13,7 @@ export class CarpetaInvestigacionService {
 
   /* private api = 'http://localhost:8090/api/'; //desarrollo */
 
-   api = 'http://localhost:3000/'; //desarrollo en servidor
+   api = 'https://localhost:3000/'; //desarrollo en servidor
 
   constructor(
     private http: HttpClient

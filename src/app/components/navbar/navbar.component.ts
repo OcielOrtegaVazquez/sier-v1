@@ -29,10 +29,10 @@ export class NavbarComponent implements OnInit {
           ]
       },
       {
-          label: 'Consultas',
-          icon: 'pi pi-fw pi-search',
+          label: 'PowerBI',
+          icon: 'pi pi-fw pi-chart-bar',
           items: [
-              {label: 'Delete', icon: 'pi pi-fw pi-trash'},
+              {label: 'Indicadores', icon: 'pi pi-fw pi-chart-pie', routerLink: "/reportesPowerBi"},
               {label: 'Refresh', icon: 'pi pi-fw pi-refresh'}
           ]
       },

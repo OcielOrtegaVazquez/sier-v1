@@ -1,15 +1,23 @@
 <!-- Header -->
 
-<div id="sideheader">
+<div id="sideheader" style="margin-bottom: 0.3rem;">
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-3">
             <img src="../assets/img/logoFgrHorizontal.png" width="60%" class="fade-in-logo">
         </div>
-        <div class="col-xs-6 col-md-9">
+        <div class="col-xs-3 col-sm-6 col-md-6">
             <header class="fade-in-logo">
-                <h1 class="text-center"><strong>S I S T E M A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I N S T I T U C I O N A L&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D E&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E V A L U A C I Ó N</strong></h1>
-                <h1 class="text-center"><strong>D E&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; R E S U L T A D O S</strong></h1>
+                <h1 class="text-center"><strong>RESULTADOS&nbsp;Y&nbsp;VERIFICACIÓN&nbsp;DE&nbsp;LA&nbsp;CONFORMIDAD</strong></h1>
+                <h1 class="text-center"><strong>R E V E C O</strong></h1>
             </header>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div id="profile" class="text-center">
+                <div id="name">
+                    <h3>{{nombreUsuario}}</h3>
+                    <button type="button" class="btn btn-danger" (click)="logout()">Cerrar Sesión</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

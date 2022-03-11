@@ -1,13 +1,4 @@
-body {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-#main {
-    box-shadow: -1px 1px 7px 0px rgba(0, 0, 0, 0.15);
-    border-radius: 5px;
-    text-align: center;
-    margin-right: auto;
+.btnInicio {
+    margin-top: 25%;
+    position: sticky
 }

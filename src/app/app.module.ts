@@ -50,12 +50,13 @@ import { HeaderComponent } from './components/header/header.component';
 
 /* Libreria PrimeNg */
 import { PanelMenuModule } from 'primeng/panelmenu';
-import { MenuItem } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { Carpetas2019Component } from './components/carpetas2019/carpetas2019.component';
 import { Carpetas2021Component } from './components/carpetas2021/carpetas2021.component';
+import { ReportesPowerBiComponent } from './components/reportes-power-bi/reportes-power-bi.component';
+import { MenubarModule } from 'primeng/menubar';
 
 
 /* Exportar funcion con datos de la aplicacion en portal Azure */
@@ -91,7 +92,8 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     HeaderComponent,
     NotFoundComponent,
     Carpetas2019Component,
-    Carpetas2021Component
+    Carpetas2021Component,
+    ReportesPowerBiComponent
   ],
   imports: [
     BrowserModule,
@@ -120,7 +122,8 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     ReactiveFormsModule,
     PanelMenuModule,
     ButtonModule,
-    TableModule
+    TableModule,
+    MenubarModule
   ],
   providers: [
     {

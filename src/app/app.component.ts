@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MsalService } from '@azure/msal-angular';
 import { HttpClient } from '@angular/common/http';
 import { AuthenticationResult } from '@azure/msal-common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ export class AppComponent  {
 
   apiResponse: string;
 
-  constructor(private authService: MsalService, private http: HttpClient) {
+  constructor(private authService: MsalService, private http: HttpClient, private router: Router) {
   }
   ngOnInit(): void {
     this.authService.instance.handleRedirectPromise().then( res => {
@@ -50,7 +51,7 @@ export class AppComponent  {
   } 
 
   logout() {
-      this.authService.logout()
+        this.authService.logout();
   }
 
   callProfile() {
