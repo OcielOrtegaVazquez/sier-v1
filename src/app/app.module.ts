@@ -57,6 +57,7 @@ import { Carpetas2019Component } from './components/carpetas2019/carpetas2019.co
 import { Carpetas2021Component } from './components/carpetas2021/carpetas2021.component';
 import { ReportesPowerBiComponent } from './components/reportes-power-bi/reportes-power-bi.component';
 import { MenubarModule } from 'primeng/menubar';
+import { Carpetas2022Component } from './components/carpetas2022/carpetas2022.component';
 
 
 /* Exportar funcion con datos de la aplicacion en portal Azure */
@@ -93,7 +94,8 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     NotFoundComponent,
     Carpetas2019Component,
     Carpetas2021Component,
-    ReportesPowerBiComponent
+    ReportesPowerBiComponent,
+    Carpetas2022Component
   ],
   imports: [
     BrowserModule,

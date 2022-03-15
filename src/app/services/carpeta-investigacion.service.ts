@@ -18,6 +18,12 @@ export class CarpetaInvestigacionService {
   constructor(
     private http: HttpClient
   ) { }
+/* Creamos la funcion que retorna el total de las capetaas 2022 */
+getCarpetas2022(){
+  const path = `${this.api}carpetas2022`;
+  return this.http.get<CarpetaInvestigacion[]>(path);
+}
+
 /* Creamos la funcion que retorna el total de las carpetas 2021 */
 getCarpetas2021(){    
   

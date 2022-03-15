@@ -1,5 +1,5 @@
 <div class="fade-in-logo">
-    <h2>Carpetas de Investigacion 2020</h2>
+    <h2>Carpetas de Investigacion 2022</h2>
 
     <div class="card">
         <div class="p-d-flex">
@@ -8,8 +8,8 @@
             <p-button type="button" icon="pi pi-refresh" (click)="reset()" styleClass="p-button-text"></p-button>
             <p-button type="button" icon="pi pi-chevron-right" (click)="next()" [disabled]="isLastPage()" styleClass="p-button-text"></p-button>
 
-            <button type="button" label="CSV" pButton pRipple icon="pi pi-file-o" (click)="dtCarpetas.exportCSV()" class="p-mr-2" pTooltip="Descargar Universo 2020 CSV"></button>
-            <button type="button" label="XLSX" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class="p-button-success p-ml-3 p-mr-2" pTooltip="Descargar Universo 2020"></button>
+            <button type="button" label="CSV" pButton pRipple icon="pi pi-file-o" (click)="dtCarpetas.exportCSV()" class="p-mr-2" pTooltip="Descargar Universo 2021 CSV"></button>
+            <button type="button" label="XLSX" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class="p-button-success p-ml-3 p-mr-2" pTooltip="Descargar Universo 2021"></button>
             <button type="button" label="FILTRADO" pButton pRipple icon="pi pi-filter" (click)="dtCarpetas.exportCSV({selectionOnly:true})" class="p-button-info p-ml-auto" pTooltip="Descargar Elementos Seleccionados" tooltipPosition="bottom"></button>
             <br>
             <br>
@@ -23,7 +23,7 @@
                         <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                     </th>
 
-                    <!--            <th>
+                    <!--                 <th>
                         <div class="p-d-flex p-jc-between p-ai-center">
                             Id Row
                             <p-columnFilter type="number" field="idRow" display="menu"></p-columnFilter>
