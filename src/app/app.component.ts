@@ -51,7 +51,7 @@ export class AppComponent  {
   } 
 
   logout() {
-        this.authService.logout();
+        this.authService.logoutRedirect({postLogoutRedirectUri: 'https://reveco.fgr.org.mx/'});
   }
 
   callProfile() {

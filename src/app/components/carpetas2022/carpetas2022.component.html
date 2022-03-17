@@ -10,7 +10,8 @@
 
             <button type="button" label="CSV" pButton pRipple icon="pi pi-file-o" (click)="dtCarpetas.exportCSV()" class="p-mr-2" pTooltip="Descargar Universo 2021 CSV"></button>
             <button type="button" label="XLSX" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class="p-button-success p-ml-3 p-mr-2" pTooltip="Descargar Universo 2021"></button>
-            <button type="button" label="FILTRADO" pButton pRipple icon="pi pi-filter" (click)="dtCarpetas.exportCSV({selectionOnly:true})" class="p-button-info p-ml-auto" pTooltip="Descargar Elementos Seleccionados" tooltipPosition="bottom"></button>
+            <button type="button" label="FILTRADO" pButton pRipple icon="pi pi-filter" (click)="dtCarpetas.exportCSV({selectionOnly:true})" encoding="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8" class="p-button-info p-ml-auto"
+                pTooltip="Descargar Elementos Seleccionados" tooltipPosition="bottom"></button>
             <br>
             <br>
         </div>
