@@ -60,6 +60,11 @@ import { MenubarModule } from 'primeng/menubar';
 import { Carpetas2022Component } from './components/carpetas2022/carpetas2022.component';
 
 
+
+import { MatDialogModule } from '@angular/material/dialog';
+
+
+
 /* Exportar funcion con datos de la aplicacion en portal Azure */
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
@@ -125,7 +130,8 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     PanelMenuModule,
     ButtonModule,
     TableModule,
-    MenubarModule
+    MenubarModule,
+    MatDialogModule
   ],
   providers: [
     {
