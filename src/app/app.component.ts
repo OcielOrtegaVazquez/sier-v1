@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { MsalService, MsalBroadcastService } from '@azure/msal-angular';
 import { EventMessage, EventType, InteractionStatus } from '@azure/msal-browser';
-import { filter, takeUntil } from 'rxjs/operators';
+import { delay, filter, takeUntil } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { AuthenticationResult } from '@azure/msal-common';
 import { Router } from '@angular/router';
@@ -51,11 +51,12 @@ export class AppComponent {
         this.checkAndSetActiveAccount();
         this.getClaims(this.authService.instance.getActiveAccount()?.idTokenClaims);
         this.mail();
+
       });
 
     this.getName();
     /* this.callProfile(); 
-    /* this.getUsuarios(); */
+    /* this.getAll(); */
   }
 
   checkAndSetActiveAccount() {
@@ -121,6 +122,14 @@ export class AppComponent {
     });
   }
 
+  /* Obtener todos los usuarios de la DB */
+  getAll() {
+    this.http.get("http://localhost:3300/users").subscribe(res => {
+      this.apiResponse = JSON.stringify(res);
+      console.log(res);
+    });
+  }
+
   /* Obtener el Display Name (nombre para mostrar) */
   displayName() {
     this.http.get("https://graph.microsoft.com/v1.0/me/displayName").subscribe(displayName => {
@@ -156,6 +165,26 @@ export class AppComponent {
             .subscribe(res => {
               console.log("Dato Enviado");
             });
+
+          setTimeout(() => {
+            this.http.post(`http://localhost:3300/auth/login`,
+              {
+                username: mail.value,
+                password: ''
+              }).subscribe(res => {
+
+                console.log("sesion Iniciada");
+                console.log("-------------------------------------------");
+                console.log("***** Mail: " + mail.value + " *****");
+                console.log("-------------------------------------------");
+                console.log("***** Usuario: " + displayName.value + " *****");
+                console.log("-------------------------------------------");
+                console.log("***** Unidad Administrativa: " + officeLocation.value + " *****");
+                console.log("-------------------------------------------");
+                console.log(res);
+              });
+          }, 1000)
+
         });
       });
     });

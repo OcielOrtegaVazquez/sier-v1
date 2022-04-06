@@ -62,6 +62,7 @@ import { Carpetas2022Component } from './components/carpetas2022/carpetas2022.co
 
 
 import { MatDialogModule } from '@angular/material/dialog';
+import { FecorComponent } from './components/fecor/fecor.component';
 
 
 
@@ -100,7 +101,8 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     Carpetas2019Component,
     Carpetas2021Component,
     ReportesPowerBiComponent,
-    Carpetas2022Component
+    Carpetas2022Component,
+    FecorComponent
   ],
   imports: [
     BrowserModule,

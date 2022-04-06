@@ -1,0 +1,86 @@
+<div id="htmlData" class="card fade-in-logo" style="margin-top: 1rem; opacity: .8;">
+    <div class="row col-xs-12 col-sm-12 col-md-12" style="margin-top: 5px; margin-left: 5px;">
+        <form [formGroup]="numeroCarpeta" novalidate (ngSubmit)="onSubmit()" #f="ngForm">
+            <mat-form-field appearance="fill">
+                <mat-label>Tipo</mat-label>
+                <mat-select [(value)]="selectedTipo" id="tipo" formControlName="tipo" ngModel required>
+                    <mat-option value="FED">FED</mat-option>
+                </mat-select>
+            </mat-form-field>
+            /
+            <mat-form-field appearance="fill">
+                <mat-label>Estado</mat-label>
+                <mat-select [(value)]="selectedEDO" id="edo" formControlName="edo" ngModel required>
+                    <mat-option [value]="estado.cve" *ngFor="let estado of estados">{{estado.cve}} | {{estado.nombre}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            /
+            <mat-form-field appearance="fill">
+                <mat-label>Unidad</mat-label>
+                <mat-select [(value)]="selectedUnidad" id="unidad" formControlName="unidad" ngModel required>
+                    <mat-option [value]="unidad.unidad" *ngFor="let unidad of unidades">{{unidad.estado}} | {{unidad.unidad}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            /
+            <mat-form-field appearance="fill">
+                <mat-label>Ingrese los 7 Digitos de la Carpeta</mat-label>
+                <input matInput [(ngModel)]="numCar" type="text" placeholder="XXXXXXX" formControlName="numCar" ngModel required minlength="7" maxlength="7">
+            </mat-form-field>
+            /
+            <mat-form-field appearance="fill">
+                <mat-label>Ingrese el Año</mat-label>
+                <mat-select [(value)]="anio" id="tipo" formControlName="anio" ngModel required>
+                    <mat-option value="2022">2022</mat-option>
+                    <mat-option value="2021">2021</mat-option>
+                    <mat-option value="2020">2020</mat-option>
+                    <mat-option value="2019">2019</mat-option>
+                    <mat-option value="2018">2018</mat-option>
+                    <mat-option value="2017">2017</mat-option>
+                    <mat-option value="2016">2016</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!numeroCarpeta.valid" style="margin-left: 3rem;">Buscar Plan</button>
+            <strong>
+                <h2>Número de carpeta a buscar: {{selectedTipo}} / {{selectedEDO}} / {{selectedUnidad}} / {{numCar}} /
+                    {{anio}}
+                </h2>
+            </strong>
+        </form>
+        <div id="" class="row" style="margin-top: 5px; margin-left: 5px;">
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <strong><label for="">Número de Carpeta:</label></strong>
+                <h3>{{NumCar}}</h3>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <strong><label for="">Célula:</label></strong>
+                <h3>{{Equipo}}</h3>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <strong><label for="">Fecha Inicio:</label></strong>
+                <h3>{{FechaCI}}</h3>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <strong><label for="">Unidad:</label></strong>
+                <h3>{{Fiscalia}}</h3>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <strong><label for="">AMPF Responsable:</label></strong>
+                <h3>{{AMPF}}</h3>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <strong><label for="">Jefe EIL:</label></strong>
+                <h3>{{jefeEIL}}</h3>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <strong><label for="">Jefe UIL:</label></strong>
+                <h3>{{jefeUIL}}</h3>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <strong><label for="">Titular de Unidad:</label></strong>
+                <h3>{{titularUnidad}}</h3>
+            </div>
+        </div>
+    </div>
+</div>
