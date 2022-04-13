@@ -1,7 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { MsalService, MsalBroadcastService } from '@azure/msal-angular';
-import { EventMessage, EventType, InteractionStatus } from '@azure/msal-browser';
-import { delay, filter, takeUntil } from 'rxjs/operators';
+import { InteractionStatus } from '@azure/msal-browser';
+import { filter, takeUntil } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { AuthenticationResult } from '@azure/msal-common';
 import { Router } from '@angular/router';
@@ -110,8 +110,8 @@ export class AppComponent {
 
   /* Cerrar sesión y direccionamiento en la pagina de inicio */
   logout() {
-    /* this.authService.logoutRedirect({postLogoutRedirectUri: 'https://reveco.fgr.org.mx/'}); */ //Eliminar de comentario para distribucion (build)
-    this.authService.logout(); //comentar para distribucio (build)
+    this.authService.logoutRedirect({postLogoutRedirectUri: 'https://reveco.fgr.org.mx/'}); //Eliminar de comentario para distribucion (build)
+    /* this.authService.logout(); */ //comentar para distribucioón (build)
   }
 
   /* Obtener todos los datos del usuario  */

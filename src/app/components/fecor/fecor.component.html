@@ -1,5 +1,5 @@
 <div id="htmlData" class="card fade-in-logo" style="margin-top: 1rem; opacity: .8;">
-    <div class="row col-xs-12 col-sm-12 col-md-12" style="margin-top: 5px; margin-left: 5px;">
+    <div class="row col-xs-12 col-sm-12 col-md-12" style="margin-top: 1rem; margin-left: 5px;">
         <form [formGroup]="numeroCarpeta" novalidate (ngSubmit)="onSubmit()" #f="ngForm">
             <mat-form-field appearance="fill">
                 <mat-label>Tipo</mat-label>
@@ -41,7 +41,9 @@
                     <mat-option value="2016">2016</mat-option>
                 </mat-select>
             </mat-form-field>
-            <button mat-raised-button color="primary" type="submit" [disabled]="!numeroCarpeta.valid" style="margin-left: 3rem;">Buscar Plan</button>
+
+            <button class="btn btn-primary" type="submit" [disabled]="!numeroCarpeta.valid" style="margin-left: 5rem;">Buscar Plan</button>
+            <button [hidden]="!numeroCarpeta.valid" class="btn btn-success" type="submit" style="margin-left: 3rem;" (click)="generatePDF()">Generar PDF</button>
             <strong>
                 <h2>Número de carpeta a buscar: {{selectedTipo}} / {{selectedEDO}} / {{selectedUnidad}} / {{numCar}} /
                     {{anio}}
@@ -50,7 +52,7 @@
         </form>
         <div id="" class="row" style="margin-top: 5px; margin-left: 5px;">
             <div class="col-xs-3 col-sm-3 col-md-3">
-                <strong><label for="">Número de Carpeta:</label></strong>
+                <strong><label for="NumCar" name="NumCar" id="NumCar">Número de Carpeta:</label></strong>
                 <h3>{{NumCar}}</h3>
             </div>
             <div class="col-xs-3 col-sm-3 col-md-3">
@@ -60,6 +62,10 @@
             <div class="col-xs-3 col-sm-3 col-md-3">
                 <strong><label for="">Fecha Inicio:</label></strong>
                 <h3>{{FechaCI}}</h3>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <strong><label for="">Hora Inicio:</label></strong>
+                <h3>{{HoraFechaCI}}</h3>
             </div>
             <div class="col-xs-3 col-sm-3 col-md-3">
                 <strong><label for="">Unidad:</label></strong>
@@ -80,6 +86,70 @@
             <div class="col-xs-3 col-sm-3 col-md-3">
                 <strong><label for="">Titular de Unidad:</label></strong>
                 <h3>{{titularUnidad}}</h3>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <!-- DIligencias -->
+
+                <p-table #dtCarpetas dataKey="idRow" [value]="resDil" [rows]="rows" [columns]="cols" [showCurrentPageReport]="true" [(first)]="first" [showCurrentPageReport]="true" responsiveLayout="scroll" [(selection)]="selectedDiligencias" [totalRecords]="totalRecords"
+                    [loading]="loading">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>
+                                <div class="p-d-flex p-jc-between p-ai-center">
+                                    Diligencia
+                                    <p-columnFilter type="text" id="Diligencia_id" name="Diligencia_id" field="Diligencia_id" display="menu">
+                                    </p-columnFilter>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="p-d-flex p-jc-between p-ai-center">
+                                    Objetivo
+                                    <p-columnFilter type="text" field="objetivo_plan_dsc" display="menu">
+                                    </p-columnFilter>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="p-d-flex p-jc-between p-ai-center">
+                                    Inicial
+                                    <p-columnFilter type="text" field="tiempo_ini" display="menu"></p-columnFilter>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="p-d-flex p-jc-between p-ai-center">
+                                    Hora de Cumplimiento
+                                    <p-columnFilter type="text" field="tiempo_res" display="menu"></p-columnFilter>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="p-d-flex p-jc-between p-ai-center">
+                                    Responsable de Diligencia
+                                    <p-columnFilter type="text" field="" display="menu"></p-columnFilter>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="p-d-flex p-jc-between p-ai-center">
+                                    Cumplimiento
+                                    <p-columnFilter type="text" field="" display="menu"></p-columnFilter>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="p-d-flex p-jc-between p-ai-center">
+                                    Obs
+                                    <p-columnFilter type="text" field="" display="menu"></p-columnFilter>
+                                </div>
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-diligencia let-rowData>
+                        <tr [pSelectableRow]="rowData">
+                            <td>{{diligencia.Diligencia_id}}</td>
+                            <td>{{diligencia.objetivo_plan_dsc}}</td>
+                            <td>{{diligencia.tiempo_ini}}</td>
+                            <td>{{diligencia.tiempo_res}}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+
             </div>
         </div>
     </div>
