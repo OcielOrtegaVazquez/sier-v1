@@ -46,6 +46,13 @@ export class NavbarComponent implements OnInit {
                 ]
             },
             {
+                label: 'CMI',
+                icon: 'pi pi-fw pi-database',
+                items: [
+                    { label: 'Descarga de Datos', icon: 'pi pi-pi pi-file-o', routerLink: "/cmi"},
+                ]
+            },
+            {
                 label: 'Actions',
                 icon: 'pi pi-fw pi-cog',
                 items: [

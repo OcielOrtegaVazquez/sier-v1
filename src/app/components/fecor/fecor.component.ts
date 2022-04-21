@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 /* importar HTTP client para realizar peticiones HTTPS */
 import { HttpClient } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
 
 /* importar form builder */
 import { FormControl, FormGroup } from '@angular/forms';
@@ -15,11 +14,10 @@ import { CatUnidad } from 'src/app/interfaces/cat-unidad';
 import { Resumen } from 'src/app/interfaces/resumen';
 
 /* Import PDFMake */
-import * as pdfMake from 'pdfMake/build/pdfmake';
+import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
-import { throwError } from 'rxjs';
 
-(<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
+(<any>pdfMake).vfs = pdfFonts.pdfMake.vfs; 
 
 @Component({
   selector: 'app-fecor',
@@ -34,7 +32,7 @@ export class FecorComponent implements OnInit {
   /* PDF Make */
   async generatePDF() {
     const docDefinition = this.getDocumentDefinition();
-    pdfMake.createPdf(docDefinition).open();
+    pdfMake.createPdf(docDefinition).open(); 
     
     /* pdfMake.createPdf(docDefinition).download(`${this.NumCar}`+ ".pdf"); */
 
@@ -64,7 +62,6 @@ export class FecorComponent implements OnInit {
           {
             text: '----------------------------------------------------------------------------------------------------------------------------------',
             bold: true,
-            fontSize: 12,
             color: 'red',
           },
           {
@@ -75,19 +72,21 @@ export class FecorComponent implements OnInit {
             },
             {
               text: this.NumCar,
-              margin: [0, 10, 0, 0]
-
+              margin: [0, 10, 0, 0],
+              
             }],
           },
           {
             columns: [{
               text: 'Célula: ',
               bold: true,
-              margin: [0, 10, 0, 0]
+              margin: [0, 10, 0, 0],
+              
             },
             {
               text: this.Equipo,
-              margin: [0, 10, 0, 0]
+              margin: [0, 10, 0, 0],
+              
             }
             ]
           },
@@ -95,19 +94,23 @@ export class FecorComponent implements OnInit {
             columns: [{
               text: 'Fecha de Inicio: ',
               bold: true,
-              margin: [0, 10, 0, 0]
+              margin: [0, 10, 0, 0],
+              
             },
             {
               text: this.FechaCI,
-              margin: [0, 10, 0, 0]
+              margin: [0, 10, 0, 0],
+              
             }, {
               text: 'Hora de Inicio: ',
               bold: true,
-              margin: [0, 10, 0, 0]
+              margin: [0, 10, 0, 0],
+              
             },
             {
               text: this.HoraFechaCI,
-              margin: [0, 10, 0, 0]
+              margin: [0, 10, 0, 0],
+              
             }
             ]
           },
@@ -115,11 +118,13 @@ export class FecorComponent implements OnInit {
             columns: [{
               text: 'Unidad: ',
               bold: true,
-              margin: [0, 10, 0, 0]
+              margin: [0, 10, 0, 0],
+              
             },
             {
               text: this.Fiscalia,
-              margin: [0, 10, 0, 0]
+              margin: [0, 10, 0, 0],
+              
             }
             ]
           },
@@ -127,11 +132,13 @@ export class FecorComponent implements OnInit {
             columns: [{
               text: 'AMPF Responsable: ',
               bold: true,
-              margin: [0, 10, 0, 0]
+              margin: [0, 10, 0, 0],
+              
             },
             {
               text: this.AMPF,
-              margin: [0, 10, 0, 0]
+              margin: [0, 10, 0, 0],
+              
             }
             ]
           },
@@ -139,11 +146,13 @@ export class FecorComponent implements OnInit {
             columns: [{
               text: 'Jefe EIL: ',
               bold: true,
-              margin: [0, 10, 0, 0]
+              margin: [0, 10, 0, 0],
+              
             },
             {
               text: this.jefeEIL,
-              margin: [0, 10, 0, 0]
+              margin: [0, 10, 0, 0],
+              
             }
             ]
           },
@@ -151,11 +160,13 @@ export class FecorComponent implements OnInit {
             columns: [{
               text: 'Jefe UIL: ',
               bold: true,
-              margin: [0, 10, 0, 0]
+              margin: [0, 10, 0, 0],
+              
             },
             {
               text: this.jefeUIL,
-              margin: [0, 10, 0, 0]
+              margin: [0, 10, 0, 0],
+              
             }
             ]
           },
@@ -163,11 +174,26 @@ export class FecorComponent implements OnInit {
             columns: [{
               text: 'Titular de la Unidad: ',
               bold: true,
-              margin: [0, 10, 0, 0]
+              margin: [0, 10, 0, 0],
+            
             },
             {
               text: this.titularUnidad,
-              margin: [0, 10, 10, 0]
+              margin: [0, 10, 10, 0],
+              
+            }
+            ]
+          }, {
+            columns: [{
+              text: 'Nombre del Plan: ',
+              bold: true,
+              margin: [0, 10, 0, 0],
+              
+            },
+            {
+              text: this.nombrePlan,
+              margin: [0, 10, 10, 0],
+             
             }
             ]
           },
@@ -181,6 +207,7 @@ export class FecorComponent implements OnInit {
             table: {
               margin: [40, 20, 20, 20],
               headerRows: 0,
+              fontSize: 10,
               widths: ['auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto'],
               body: [[
                 { text: 'Diligencia', fontSize: 9, bold: true, style: 'tableHeader', fillColor: '#eeeeee' },
@@ -224,6 +251,7 @@ export class FecorComponent implements OnInit {
   public jefeEIL?: string;
   public jefeUIL?: string;
   public titularUnidad?: string;
+  public nombrePlan?: string;
   public dil?: any;
   public Diligencia_id?: string;
 
@@ -265,6 +293,8 @@ export class FecorComponent implements OnInit {
     numCar: new FormControl(''),
     anio: new FormControl('')
   });
+ 
+  api = 'https://localhost:3000/';
 
   ngOnInit(): void {
     this.getEstados();
@@ -273,21 +303,21 @@ export class FecorComponent implements OnInit {
 
   /* Obtener todos los Planes de Investigacion */
   getPlanInvestigacion() {
-    this.http.get("https://localhost:3000/planInvestigacion").subscribe(res => {
+    this.http.get(`${this.api}planInvestigacion`).subscribe(res => {
       this.apiResponse = JSON.stringify(res);
     })
   };
 
   /* Obtener Cat_Estados */
   getEstados() {
-    this.http.get<any>("https://localhost:3000/catEstados").subscribe(res => {
+    this.http.get<any>(`${this.api}catEstados`).subscribe(res => {
       this.estados = res;
     })
   };
 
   /* Obtener Cat_Unidades */
   getUnidades() {
-    this.http.get<any>("https://localhost:3000/catUnidad").subscribe(res => {
+    this.http.get<any>(`${this.api}catUnidad`).subscribe(res => {
       this.unidades = res;
     })
   };
@@ -295,7 +325,7 @@ export class FecorComponent implements OnInit {
   /* Busqueda de Plan de investigacion Por Numero de carpeta */
   onSubmit() {
     if (this.numeroCarpeta.valid) {
-        this.http.get<any>(`https://localhost:3000/planInvestigacion/${this.numeroCarpeta.value.tipo}/${this.numeroCarpeta.value.edo}/${this.numeroCarpeta.value.unidad}/${this.numeroCarpeta.value.numCar}/${this.numeroCarpeta.value.anio}`).subscribe(res => {
+        this.http.get<any>(`${this.api}planInvestigacion/${this.numeroCarpeta.value.tipo}/${this.numeroCarpeta.value.edo}/${this.numeroCarpeta.value.unidad}/${this.numeroCarpeta.value.numCar}/${this.numeroCarpeta.value.anio}`).subscribe(res => {
 
         /* Captura Numero de carpeta */
         this.NumCar = res[0].NumCar;
@@ -319,7 +349,7 @@ export class FecorComponent implements OnInit {
         this.IdMP = res[0].AMPF_ID
 
         /* Obtener la estructura del la Celula  */
-        this.http.get<any>(`https://localhost:3000/mpEstructura/${this.IdMP}`).subscribe(res => {
+        this.http.get<any>(`${this.api}mpEstructura/${this.IdMP}`).subscribe(res => {
 
           /* Capturar Jefe EIL */
           this.jefeEIL = res[0].Nombre2;
@@ -331,11 +361,16 @@ export class FecorComponent implements OnInit {
           this.titularUnidad = res[0].Nombre4;
 
           /* Obtener Plan de Investigacion Asignado */
-          this.http.get<any>(`https://localhost:3000/planDiligenciaCi/${this.numeroCarpeta.value.tipo}/${this.numeroCarpeta.value.edo}/${this.numeroCarpeta.value.unidad}/${this.numeroCarpeta.value.numCar}/${this.numeroCarpeta.value.anio}`)
+          this.http.get<any>(`${this.api}planDiligenciaCi/${this.numeroCarpeta.value.tipo}/${this.numeroCarpeta.value.edo}/${this.numeroCarpeta.value.unidad}/${this.numeroCarpeta.value.numCar}/${this.numeroCarpeta.value.anio}`)
             .subscribe(data => {
               this.resDil = data;
               this.loading = false;
+
+                   /* Capturar el Nombre del Plan */
+            this.nombrePlan = data[0].NombrePlan;
             });
+
+       
 
           this.cols = [
             { field: 'Diligencia_id', header: 'Diligencia_id' },
@@ -359,12 +394,7 @@ export class FecorComponent implements OnInit {
                          let tiempo_res;
                      }  */
         });
-      }), err =>{
-        catchError(err => {
-          return throwError(err);
-        })
-        console.log("error tipo " + err);
-      }
+      });
     } else {
       alert("Rellena Todos los campos correctamente")
     }

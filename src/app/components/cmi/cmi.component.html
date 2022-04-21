@@ -1,0 +1,26 @@
+<div id="htmlData" class="card fade-in-logo" style="margin-top: 1rem; opacity: .8;">
+    <div class="row col-xs-12 col-sm-12 col-md-12" style="margin-top: 1rem; margin-left: 5px;">
+        <form [formGroup]="cmi" novalidate (ngSubmit)="onSubmit()" #f="ngForm">
+            <mat-form-field appearance="fill">
+                <mat-label>Selecciona el Repositorio</mat-label>
+                <mat-select [(value)]="selectedArea" id="area" formControlName="area" required>
+                    <mat-option value=1>COPLADII_CENAPI</mat-option>
+                    <mat-option value=2>COPLADII_CGSP</mat-option>
+                    <mat-option value=3>COPLADII_PFM_MM</mat-option>
+                    <!-- <mat-option value=4>COPLADII_PFM_MJ</mat-option> -->
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" style="margin-left: 1.5rem;">
+                <mat-label>Selecciona el Rango de Fechas</mat-label>
+                <mat-date-range-input [rangePicker]="picker">
+                    <input matStartDate formControlName="startDate" placeholder="Start date" required>
+                    <input matEndDate formControlName="endDate" placeholder="End date" required>
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+            </mat-form-field>
+            <button class="btn btn-primary" type="submit" [disabled]="!cmi.valid" style="margin-left: 5rem;">Buscar Registros</button>
+        </form>
+    </div>
+</div>

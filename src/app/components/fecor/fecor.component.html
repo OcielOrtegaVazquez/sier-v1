@@ -3,14 +3,14 @@
         <form [formGroup]="numeroCarpeta" novalidate (ngSubmit)="onSubmit()" #f="ngForm">
             <mat-form-field appearance="fill">
                 <mat-label>Tipo</mat-label>
-                <mat-select [(value)]="selectedTipo" id="tipo" formControlName="tipo" ngModel required>
+                <mat-select [(value)]="selectedTipo" id="tipo" formControlName="tipo" required>
                     <mat-option value="FED">FED</mat-option>
                 </mat-select>
             </mat-form-field>
             /
             <mat-form-field appearance="fill">
                 <mat-label>Estado</mat-label>
-                <mat-select [(value)]="selectedEDO" id="edo" formControlName="edo" ngModel required>
+                <mat-select [(value)]="selectedEDO" id="edo" formControlName="edo" required>
                     <mat-option [value]="estado.cve" *ngFor="let estado of estados">{{estado.cve}} | {{estado.nombre}}
                     </mat-option>
                 </mat-select>
@@ -18,7 +18,7 @@
             /
             <mat-form-field appearance="fill">
                 <mat-label>Unidad</mat-label>
-                <mat-select [(value)]="selectedUnidad" id="unidad" formControlName="unidad" ngModel required>
+                <mat-select [(value)]="selectedUnidad" id="unidad" formControlName="unidad" required>
                     <mat-option [value]="unidad.unidad" *ngFor="let unidad of unidades">{{unidad.estado}} | {{unidad.unidad}}
                     </mat-option>
                 </mat-select>
@@ -26,12 +26,12 @@
             /
             <mat-form-field appearance="fill">
                 <mat-label>Ingrese los 7 Digitos de la Carpeta</mat-label>
-                <input matInput [(ngModel)]="numCar" type="text" placeholder="XXXXXXX" formControlName="numCar" ngModel required minlength="7" maxlength="7">
+                <input matInput [(ngModel)]="numCar" type="text" placeholder="XXXXXXX" formControlName="numCar" required minlength="7" maxlength="7">
             </mat-form-field>
             /
             <mat-form-field appearance="fill">
                 <mat-label>Ingrese el Año</mat-label>
-                <mat-select [(value)]="anio" id="tipo" formControlName="anio" ngModel required>
+                <mat-select [(value)]="anio" id="tipo" formControlName="anio" required>
                     <mat-option value="2022">2022</mat-option>
                     <mat-option value="2021">2021</mat-option>
                     <mat-option value="2020">2020</mat-option>
@@ -86,6 +86,10 @@
             <div class="col-xs-3 col-sm-3 col-md-3">
                 <strong><label for="">Titular de Unidad:</label></strong>
                 <h3>{{titularUnidad}}</h3>
+            </div>
+            <div class="col-xs-3 col-sm-6 col-md-6">
+                <strong><label for="">Nombre de Plan:</label></strong>
+                <h3>{{nombrePlan}}</h3>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <!-- DIligencias -->

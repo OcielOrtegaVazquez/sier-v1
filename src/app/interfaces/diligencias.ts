@@ -11,4 +11,5 @@ export interface Diligencia {
     referencia_ley: string;
     tiempo_ini: string;
     tiempo_res: string;
+    nombrePlan: string;
 }

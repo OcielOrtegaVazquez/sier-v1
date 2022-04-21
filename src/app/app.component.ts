@@ -111,7 +111,7 @@ export class AppComponent {
   /* Cerrar sesión y direccionamiento en la pagina de inicio */
   logout() {
     this.authService.logoutRedirect({postLogoutRedirectUri: 'https://reveco.fgr.org.mx/'}); //Eliminar de comentario para distribucion (build)
-    /* this.authService.logout(); */ //comentar para distribucioón (build)
+    /* this.authService.logout();  */ //comentar para distribucioón (build)
   }
 
   /* Obtener todos los datos del usuario  */

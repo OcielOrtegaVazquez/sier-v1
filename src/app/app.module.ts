@@ -6,12 +6,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 
 /* Importamos las instancias */
-
 import { MsalModule, MsalService, MSAL_INSTANCE } from '@azure/msal-angular';
 import { IPublicClientApplication, PublicClientApplication } from '@azure/msal-browser';
 
 /* Importamos los modulos de material */
-
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -28,39 +26,42 @@ import { MatSortModule } from '@angular/material/sort';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 /* Importacion para interceptor */
-
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MsalInterceptor, MsalInterceptorConfiguration, MSAL_INTERCEPTOR_CONFIG } from '@azure/msal-angular';
 import { InteractionType } from '@azure/msal-browser';
 
 /* Componentes */
-
 import { PublicPageComponent } from './public-page/public-page.component';
 import { RestrictedPageComponent } from './restricted-page/restricted-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CarpetaInvestigacionComponent } from './components/carpeta-investigacion/carpeta-investigacion.component';
 import { CarpetasUniversoComponent } from './components/carpetas-universo/carpetas-universo.component';
+import { Carpetas2019Component } from './components/carpetas2019/carpetas2019.component';
+import { Carpetas2021Component } from './components/carpetas2021/carpetas2021.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FecorComponent } from './components/fecor/fecor.component';
+import { EstructuraFecorComponent } from './components/estructura-fecor/estructura-fecor.component';
+import { Carpetas2022Component } from './components/carpetas2022/carpetas2022.component';
+import { ReportesPowerBiComponent } from './components/reportes-power-bi/reportes-power-bi.component';
+import { CmiComponent } from './components/cmi/cmi.component';
 
 /* Material Data Grid */
-
 import { AngularMaterialDataGridModule } from 'angular-material-data-grid';
-import { HeaderComponent } from './components/header/header.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 /* Libreria PrimeNg */
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { Carpetas2019Component } from './components/carpetas2019/carpetas2019.component';
-import { Carpetas2021Component } from './components/carpetas2021/carpetas2021.component';
-import { ReportesPowerBiComponent } from './components/reportes-power-bi/reportes-power-bi.component';
 import { MenubarModule } from 'primeng/menubar';
-import { Carpetas2022Component } from './components/carpetas2022/carpetas2022.component';
 
-import { MatDialogModule } from '@angular/material/dialog';
-import { FecorComponent } from './components/fecor/fecor.component';
+/* Exporter mat-table */
+import { MatTableExporterModule } from 'mat-table-exporter';
+
 
 /* Exportar funcion con datos de la aplicacion en portal Azure */
 export function MSALInstanceFactory(): IPublicClientApplication {
@@ -98,7 +99,9 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     Carpetas2021Component,
     ReportesPowerBiComponent,
     Carpetas2022Component,
-    FecorComponent
+    FecorComponent,
+    EstructuraFecorComponent,
+    CmiComponent
   ],
   imports: [
     BrowserModule,
@@ -130,6 +133,8 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     TableModule,
     MenubarModule,
     MatDialogModule,
+    MatTableExporterModule,
+    MatDatepickerModule
   ],
   providers: [
     {
