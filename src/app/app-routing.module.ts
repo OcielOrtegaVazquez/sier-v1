@@ -13,6 +13,7 @@ import { Carpetas2022Component } from './components/carpetas2022/carpetas2022.co
 import { FecorComponent } from './components/fecor/fecor.component';
 import { EstructuraFecorComponent } from './components/estructura-fecor/estructura-fecor.component';
 import { CmiComponent } from './components/cmi/cmi.component';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path : 'plan-investigacion', component: FecorComponent, canActivate: [MaslGuard]},
   {path : 'estructura-fecor',   component: EstructuraFecorComponent, canActivate: [MaslGuard]},
   {path : 'cmi',                component: CmiComponent, canActivate: [MaslGuard]},
+  {path : 'users',              component: UsuariosComponent, canActivate: [MaslGuard]},
   {path: 'restricted-page',     component: RestrictedPageComponent, canActivate: [MaslGuard]},
   {path : '**',                 component: NotFoundComponent},
 ];

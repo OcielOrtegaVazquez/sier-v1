@@ -15,7 +15,7 @@
             <br>
         </div>
 
-        <p-table #dtCarpetas dataKey="idRow" [value]="carpetas" [paginator]="true" [rows]="rows" [columns]="cols" [showCurrentPageReport]="true" [(first)]="first" currentPageReportTemplate="Carpeta {first} De {last} De {totalRecords} Carpetas" [rowsPerPageOptions]="[10,25,50]"
+        <p-table #dtCarpetas dataKey="idRow" [value]="carpeta" [paginator]="true" [rows]="rows" [columns]="cols" [showCurrentPageReport]="true" [(first)]="first" currentPageReportTemplate="Carpeta {first} De {last} De {totalRecords} Carpetas" [rowsPerPageOptions]="[10,25,50]"
             [showCurrentPageReport]="true" [globalFilterFields]="['NUM_CARPETA_INVESTIGACION']" selectionMode="multiple" responsiveLayout="scroll" [(selection)]="selectedCarpetas" [totalRecords]="totalRecords" [loading]="loading">
             <ng-template pTemplate="header">
                 <tr>

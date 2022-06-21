@@ -28,9 +28,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 /* Importacion para interceptor */
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpInterceptor } from '@angular/common/http';
 import { MsalInterceptor, MsalInterceptorConfiguration, MSAL_INTERCEPTOR_CONFIG } from '@azure/msal-angular';
 import { InteractionType } from '@azure/msal-browser';
 
@@ -59,10 +60,20 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { MenubarModule } from 'primeng/menubar';
+import { ToastModule } from 'primeng/toast';
+import { DialogModule } from 'primeng/dialog';
+import { ToolbarModule } from 'primeng/toolbar';
+import { FileUploadModule } from 'primeng/fileupload';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { RatingModule } from 'primeng/rating';
 
 /* Exporter mat-table */
 import { MatTableExporterModule } from 'mat-table-exporter';
 
+/* Spinner */
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { InterceptorService } from './services/interceptor.service';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
 
 /* Exportar funcion con datos de la aplicacion en portal Azure */
 export function MSALInstanceFactory(): IPublicClientApplication {
@@ -102,7 +113,8 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     Carpetas2022Component,
     FecorComponent,
     EstructuraFecorComponent,
-    CmiComponent
+    CmiComponent,
+    UsuariosComponent
   ],
   imports: [
     BrowserModule,
@@ -135,7 +147,15 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     MenubarModule,
     MatDialogModule,
     MatTableExporterModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatProgressSpinnerModule,
+    NgxSpinnerModule,
+    ToastModule,
+    DialogModule,
+    ToolbarModule,
+    FileUploadModule,
+    ConfirmDialogModule,
+    RatingModule
   ],
   providers: [ExcelService,
     {
@@ -151,9 +171,14 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
    {
       provide: MSAL_INTERCEPTOR_CONFIG,
       useFactory: MSALInterceptorConfigFactory
-    } 
-    
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    }    
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+ 
 })
 export class AppModule { }

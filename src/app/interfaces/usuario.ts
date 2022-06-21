@@ -1,8 +1,17 @@
 export interface Usuario {
-    displayName: string,
-    id: number,
-    mail: string,
-    officeLocation: string
+    displayName?: string,
+    id?: string,
+    mail?: string,
+    officeLocation?: string
+    username?: string,
+    password?: string,
+    nombre?: string,
+    role?: string,
+    u_admin?: string,
+    sede?: string,
+    subsede?: string,
+    cargo?: string,
+    value?: string
 }
 
 export interface Mail {

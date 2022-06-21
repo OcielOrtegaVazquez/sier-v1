@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 /* Importamos el servicio CarpetaInvestigacion */
 import { CarpetaInvestigacionService } from '../../services/carpeta-investigacion.service';
@@ -12,6 +12,12 @@ import * as FileSaver from 'file-saver';
 /* Importamos los pipes de PrimeNG */
 import { DatePipe } from '@angular/common';
 
+/* Importar Table de PrimeNg */
+import { Table } from 'primeng/table';
+
+/* Enviroment */
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-carpetas2022',
   templateUrl: './carpetas2022.component.html',
@@ -21,7 +27,7 @@ import { DatePipe } from '@angular/common';
 export class Carpetas2022Component implements OnInit {
 
   /* Declaramos una variable para el arreglo de carpetas */
-  carpetas: CarpetaInvestigacion[] = [];
+  carpeta: CarpetaInvestigacion[];
 
   /* Declaramos una variable para el loader */
   loading: boolean;
@@ -40,6 +46,8 @@ export class Carpetas2022Component implements OnInit {
   /* Declaramos el arreglo para exportar las columnas en excel */
   exportColumns: any[];
 
+  @ViewChild('dt') table: Table;
+
   constructor(private carpetaInvestigacionService: CarpetaInvestigacionService) { }
 
   ngOnInit(): void {
@@ -49,13 +57,12 @@ export class Carpetas2022Component implements OnInit {
   /* Creamos la funcion para hacer el llamado del universo de carpetas getCarpetas2021 */
   getCarpetas2022() {
     this.loading = true;
-    this.carpetaInvestigacionService.getCarpetas2022()
-      .subscribe(
-        data => {
-          this.carpetas = data;
-          this.loading = false;
-        }
-      )
+    this.carpetaInvestigacionService.getCarpetas2022().then(carpetas => {
+      this.carpeta = carpetas;
+      this.loading = false;
+      console.log(carpetas);
+    });
+
     this.cols = [
       { field: 'idRow', header: 'idRow' },
       { field: 'NumCar', header: 'NumCar' },
@@ -89,21 +96,21 @@ export class Carpetas2022Component implements OnInit {
 
   /* Estando en la ultima página */
   isLastPage() {
-    return this.carpetas ? this.first === (this.carpetas.length - this.rows) : true;
+    return this.carpeta ? this.first === (this.carpeta.length - this.rows) : true;
   }
 
   /* Estando en la Primer página */
   isFirstPage() {
-    return this.carpetas ? this.first === 0 : true;
+    return this.carpeta ? this.first === 0 : true;
   }
 
   /* Exportar el universo de la consulta en excel */
   exportExcel() {
     import("xlsx").then(xlsx => {
-      const worksheet = xlsx.utils.json_to_sheet(this.carpetas);
+      const worksheet = xlsx.utils.json_to_sheet(this.carpeta);
       const workbook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
       const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
-      this.saveAsExcelFile(excelBuffer, "Universo_Carpetas_2019");
+      this.saveAsExcelFile(excelBuffer, "Universo_Carpetas_2022");
     });
   }
 

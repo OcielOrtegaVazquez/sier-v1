@@ -5,6 +5,12 @@ import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup } from '@angular/forms';
 import * as moment from 'moment';
 import { ExcelService } from '../../services/excel.service';
+import { SpinnerService } from '../../services/spinner.service';
+import { MatStartDate } from '@angular/material/datepicker';
+import { JsonPipe } from '@angular/common';
+
+/* Enviroment */
+import { environment } from 'src/environments/environment';
 
 export class Consulta{
   area: string;
@@ -34,14 +40,18 @@ export class CmiComponent implements OnInit {
   submitted = false;
   currentDate: Date = new Date();
   consulta = new Consulta('', '', '');
-  api = 'https://localhost:3000/';
+  baseUrl = environment.baseUrl;
+  api = 'https://localhost:3000/admin/';//api desarrollo
+  //api = 'https://reveco.fgr.org.mx:3000/amin';//api produccion
 
   apiResponse = '';
 
-  constructor(private http: HttpClient, private excelService: ExcelService) { }
+  value: number;
+
+  constructor(private http: HttpClient, private excelService: ExcelService, private spinnerService: SpinnerService) { }
 
   ngOnInit(): void {
-    this.cmi = new FormGroup({
+      this.cmi = new FormGroup({
       area: new FormControl(''),
       startDate: new FormControl(''),
       endDate: new FormControl('')
@@ -58,41 +68,47 @@ export class CmiComponent implements OnInit {
     console.log("Fecha de Inicio: " + this.consulta.startDate);
     console.log("Fecha de Inicio: " + this.consulta.endDate);
 
-
     switch (this.cmi.value.area) {
       case "1":
         console.log('Reporte de CENAPI');
         if (this.cmi.valid) {
-          this.http.get<any>(`${this.api}reporteCENAPI/${this.consulta.startDate}/${this.consulta.endDate}`).subscribe(resCenapi => {
+          /*this.http.get<any>(`${this.api}reporteCENAPI/${this.consulta.startDate}/${this.consulta.endDate}`).subscribe(resCenapi => {
             this.apiResponse = JSON.stringify(resCenapi);
             console.log(resCenapi);
             console.log(`Generando reporte CENAPI ${this.consulta.startDate} - ${this.consulta.endDate}` );
             this.excelService.exportAsExcelFile(resCenapi, 'COPLADII_CENAPI_' + this.consulta.startDate + '_' + this.consulta.endDate);
-          });
-        } 
-        
+          }); */
+          this.http.post(`${this.baseUrl}/reporteCENAPI/rango`,{startDate: this.consulta.startDate, endDate: this.consulta.endDate}).subscribe( resCenapi => {
+            this.apiResponse = JSON.stringify({resCenapi});
+            console.log("Fecha 1: " + this.consulta.startDate);
+            console.log("fecha 2: " + this.consulta.endDate);
+            console.log("Generando reporte CENAPI..."  );
+            this.excelService.exportAsExcelFile(resCenapi, 'COPLADII_CENAPI_' + this.consulta.startDate + '_' + this.consulta.endDate);
+          });          
+        }         
         break;
 
       case "2":
         console.log('Reporte de CGSP');
         if(this.cmi.valid){
-          this.http.get<any>(`${this.api}reporteCGSP/${this.consulta.startDate}/${this.consulta.endDate}`).subscribe(resCGSP => {
-            this.apiResponse = JSON.stringify(resCGSP);
-            console.log(resCGSP);
-            console.log(`Generando reporte CGSP ${this.consulta.startDate} - ${this.consulta.endDate}` );
-            this.excelService.exportAsExcelFile(resCGSP, 'COPLADII_CGSP_' + this.consulta.startDate + '_' + this.consulta.endDate);
+          this.http.post(`${this.baseUrl}/reporteCGSP/rango`,{startDate: this.consulta.startDate, endDate: this.consulta.endDate}).subscribe( resCGSP => {
+            this.apiResponse = JSON.stringify({resCGSP});
+            console.log("Fecha 1: " + this.consulta.startDate);
+            console.log("fecha 2: " + this.consulta.endDate);
+            console.log("Generando reporte CGSP..." );
+            this.excelService.exportAsExcelFile(resCGSP, 'COPLADII_CCGSP_' + this.consulta.startDate + '_' + this.consulta.endDate);
           });
         }
-
         break;
 
       case "3":
         console.log('Reporte de PFM_MM');
         if(this.cmi.valid){
-          this.http.get<any>(`${this.api}reporte_PFM_MM/${this.consulta.startDate}/${this.consulta.endDate}`).subscribe( resPFM_MM => {
-            this.apiResponse = JSON.stringify(resPFM_MM);
-            console.log(resPFM_MM);
-            console.log(`Generando reporte PFM_MM ${this.consulta.startDate} - ${this.consulta.endDate}` );
+          this.http.post(`${this.baseUrl}/reportePFM_MM/rango`,{startDate: this.consulta.startDate, endDate: this.consulta.endDate}).subscribe( resPFM_MM => {
+            this.apiResponse = JSON.stringify({resPFM_MM});
+            console.log("Fecha 1: " + this.consulta.startDate);
+            console.log("fecha 2: " + this.consulta.endDate);
+            console.log("Generando reporte PFM_MM..." );
             this.excelService.exportAsExcelFile(resPFM_MM, 'COPLADII_PFM_MM_' + this.consulta.startDate + '_' + this.consulta.endDate);
           });
         }
@@ -101,12 +117,13 @@ export class CmiComponent implements OnInit {
       case "4":
         console.log('Reporte de PFM_MJ');
         if(this.cmi.valid){
-          this.http.get<any>(`${this.api}reporte_PFM_MJ/${this.consulta.startDate}/${this.consulta.endDate}`).subscribe(resPFM_MJ => {
-            this.apiResponse = JSON.stringify(resPFM_MJ);
-            console.log(resPFM_MJ);
-            console.log(`Generando reporte PFM_MJ ${this.consulta.startDate} - ${this.consulta.endDate}`);
-            this.excelService.exportAsExcelFile(resPFM_MJ, 'COPLADII_PFM_MJ_' + this.consulta.startDate + '_' + this.consulta.endDate)
-          })
+          this.http.post(`${this.baseUrl}/reportePFM_MJ/rango`,{startDate: this.consulta.startDate, endDate: this.consulta.endDate}).subscribe( resPFM_MJ => {
+            this.apiResponse = JSON.stringify({resPFM_MJ});
+            console.log("Fecha 1: " + this.consulta.startDate);
+            console.log("fecha 2: " + this.consulta.endDate);
+            console.log("Generando reporte PFM_MJ..." );
+            this.excelService.exportAsExcelFile(resPFM_MJ, 'COPLADII_PFM_MJ_' + this.consulta.startDate + '_' + this.consulta.endDate);
+          });
         }
         break;
     }

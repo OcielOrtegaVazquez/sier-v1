@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 /* importar HTTP client para realizar peticiones HTTPS */
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 /* importar form builder */
 import { FormControl, FormGroup } from '@angular/forms';
@@ -16,8 +16,11 @@ import { Resumen } from 'src/app/interfaces/resumen';
 /* Import PDFMake */
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+import { environment } from '../../../environments/environment';
 
-(<any>pdfMake).vfs = pdfFonts.pdfMake.vfs; 
+/* Enviroment */
+
+(<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-fecor',
@@ -28,12 +31,11 @@ export class FecorComponent implements OnInit {
 
   resume = new Resumen();
 
-
   /* PDF Make */
   async generatePDF() {
     const docDefinition = this.getDocumentDefinition();
-    pdfMake.createPdf(docDefinition).open(); 
-    
+    pdfMake.createPdf(docDefinition).open();
+
     /* pdfMake.createPdf(docDefinition).download(`${this.NumCar}`+ ".pdf"); */
 
   }
@@ -73,7 +75,7 @@ export class FecorComponent implements OnInit {
             {
               text: this.NumCar,
               margin: [0, 10, 0, 0],
-              
+
             }],
           },
           {
@@ -81,12 +83,12 @@ export class FecorComponent implements OnInit {
               text: 'Célula: ',
               bold: true,
               margin: [0, 10, 0, 0],
-              
+
             },
             {
               text: this.Equipo,
               margin: [0, 10, 0, 0],
-              
+
             }
             ]
           },
@@ -95,22 +97,22 @@ export class FecorComponent implements OnInit {
               text: 'Fecha de Inicio: ',
               bold: true,
               margin: [0, 10, 0, 0],
-              
+
             },
             {
               text: this.FechaCI,
               margin: [0, 10, 0, 0],
-              
+
             }, {
               text: 'Hora de Inicio: ',
               bold: true,
               margin: [0, 10, 0, 0],
-              
+
             },
             {
               text: this.HoraFechaCI,
               margin: [0, 10, 0, 0],
-              
+
             }
             ]
           },
@@ -119,12 +121,12 @@ export class FecorComponent implements OnInit {
               text: 'Unidad: ',
               bold: true,
               margin: [0, 10, 0, 0],
-              
+
             },
             {
               text: this.Fiscalia,
               margin: [0, 10, 0, 0],
-              
+
             }
             ]
           },
@@ -133,12 +135,12 @@ export class FecorComponent implements OnInit {
               text: 'AMPF Responsable: ',
               bold: true,
               margin: [0, 10, 0, 0],
-              
+
             },
             {
               text: this.AMPF,
               margin: [0, 10, 0, 0],
-              
+
             }
             ]
           },
@@ -147,12 +149,12 @@ export class FecorComponent implements OnInit {
               text: 'Jefe EIL: ',
               bold: true,
               margin: [0, 10, 0, 0],
-              
+
             },
             {
               text: this.jefeEIL,
               margin: [0, 10, 0, 0],
-              
+
             }
             ]
           },
@@ -161,12 +163,12 @@ export class FecorComponent implements OnInit {
               text: 'Jefe UIL: ',
               bold: true,
               margin: [0, 10, 0, 0],
-              
+
             },
             {
               text: this.jefeUIL,
               margin: [0, 10, 0, 0],
-              
+
             }
             ]
           },
@@ -175,12 +177,12 @@ export class FecorComponent implements OnInit {
               text: 'Titular de la Unidad: ',
               bold: true,
               margin: [0, 10, 0, 0],
-            
+
             },
             {
               text: this.titularUnidad,
               margin: [0, 10, 10, 0],
-              
+
             }
             ]
           }, {
@@ -188,12 +190,12 @@ export class FecorComponent implements OnInit {
               text: 'Nombre del Plan: ',
               bold: true,
               margin: [0, 10, 0, 0],
-              
+
             },
             {
               text: this.nombrePlan,
               margin: [0, 10, 10, 0],
-             
+
             }
             ]
           },
@@ -293,8 +295,9 @@ export class FecorComponent implements OnInit {
     numCar: new FormControl(''),
     anio: new FormControl('')
   });
- 
-  api = 'https://localhost:3000/';
+
+  api = 'https://localhost:3000/admin/';
+  baseUrl = environment.baseUrl;
 
   ngOnInit(): void {
     this.getEstados();
@@ -303,29 +306,38 @@ export class FecorComponent implements OnInit {
 
   /* Obtener todos los Planes de Investigacion */
   getPlanInvestigacion() {
-    this.http.get(`${this.api}planInvestigacion`).subscribe(res => {
+    this.http.get(`${this.baseUrl}/planInvestigacion`).subscribe(res => {
       this.apiResponse = JSON.stringify(res);
     })
   };
 
   /* Obtener Cat_Estados */
   getEstados() {
-    this.http.get<any>(`${this.api}catEstados`).subscribe(res => {
+    this.http.get<any>(`${this.baseUrl}/catEstados`).subscribe(res => {
       this.estados = res;
     })
   };
 
   /* Obtener Cat_Unidades */
   getUnidades() {
-    this.http.get<any>(`${this.api}catUnidad`).subscribe(res => {
+    this.http.get<any>(`${this.baseUrl}/catUnidades`).subscribe(res => {
       this.unidades = res;
     })
   };
 
   /* Busqueda de Plan de investigacion Por Numero de carpeta */
   onSubmit() {
+
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' });
+
     if (this.numeroCarpeta.valid) {
-        this.http.get<any>(`${this.api}planInvestigacion/${this.numeroCarpeta.value.tipo}/${this.numeroCarpeta.value.edo}/${this.numeroCarpeta.value.unidad}/${this.numeroCarpeta.value.numCar}/${this.numeroCarpeta.value.anio}`).subscribe(res => {
+      this.http.post<any>(`${this.baseUrl}/planInvestigacion/carpeta/`, {
+        tipo: this.selectedTipo,
+        edo: this.selectedEDO,
+        unidad: this.selectedUnidad,
+        numCar: this.numCar,
+        anio: this.anio
+      }, { headers }).subscribe(res => {
 
         /* Captura Numero de carpeta */
         this.NumCar = res[0].NumCar;
@@ -349,7 +361,7 @@ export class FecorComponent implements OnInit {
         this.IdMP = res[0].AMPF_ID
 
         /* Obtener la estructura del la Celula  */
-        this.http.get<any>(`${this.api}mpEstructura/${this.IdMP}`).subscribe(res => {
+        this.http.get<any>(`${this.baseUrl}/mpEstructura/${this.IdMP}`).subscribe(res => {
 
           /* Capturar Jefe EIL */
           this.jefeEIL = res[0].Nombre2;
@@ -361,16 +373,22 @@ export class FecorComponent implements OnInit {
           this.titularUnidad = res[0].Nombre4;
 
           /* Obtener Plan de Investigacion Asignado */
-          this.http.get<any>(`${this.api}planDiligenciaCi/${this.numeroCarpeta.value.tipo}/${this.numeroCarpeta.value.edo}/${this.numeroCarpeta.value.unidad}/${this.numeroCarpeta.value.numCar}/${this.numeroCarpeta.value.anio}`)
+          this.http.post<any>(`${this.baseUrl}/planDiligenciaCi/carpeta/`, {
+            tipo: this.selectedTipo,
+            edo: this.selectedEDO,
+            unidad: this.selectedUnidad,
+            numCar: this.numCar,
+            anio: this.anio
+          }, { headers })
             .subscribe(data => {
               this.resDil = data;
               this.loading = false;
 
-                   /* Capturar el Nombre del Plan */
-            this.nombrePlan = data[0].NombrePlan;
+              /* Capturar el Nombre del Plan */
+              this.nombrePlan = data[0].NombrePlan;
             });
 
-       
+
 
           this.cols = [
             { field: 'Diligencia_id', header: 'Diligencia_id' },
@@ -393,10 +411,11 @@ export class FecorComponent implements OnInit {
                          console.log(this.resDil[i].tiempo_res);
                          let tiempo_res;
                      }  */
-        });
+        }); console.log("Encontrado: " + res);
       });
     } else {
       alert("Rellena Todos los campos correctamente")
     }
+
   };
 }

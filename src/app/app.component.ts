@@ -2,10 +2,13 @@ import { Component } from '@angular/core';
 import { MsalService, MsalBroadcastService } from '@azure/msal-angular';
 import { InteractionStatus } from '@azure/msal-browser';
 import { filter, takeUntil } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthenticationResult } from '@azure/msal-common';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+
+/* Enviroment */
+import { environment } from 'src/environments/environment';
 
 /* importamos Interface de Mail */
 import { Mail } from './interfaces/usuario';
@@ -29,13 +32,17 @@ export class AppComponent {
 
   title = 'FGR-GRID-V2';
 
+  baseUrl = environment.baseUrl;
+
   apiResponse: string;
 
   displayedColumns: string[] = ['claim', 'value'];
   dataSource: Claim[] = [];
   private readonly _destroying$ = new Subject<void>();
-
   loginDisplay = false;
+
+  /* Prime Faces */
+  userDialog: boolean = true;
 
   constructor(private msalBroadcastService: MsalBroadcastService, private authService: MsalService, private http: HttpClient, private router: Router, private usuarioService: UsuarioService,
   ) {
@@ -55,8 +62,8 @@ export class AppComponent {
       });
 
     this.getName();
-    /* this.callProfile(); 
-    /* this.getAll(); */
+    /* this.callProfile(); */
+    /* this.getAll();  */
   }
 
   checkAndSetActiveAccount() {
@@ -124,7 +131,7 @@ export class AppComponent {
 
   /* Obtener todos los usuarios de la DB */
   getAll() {
-    this.http.get("http://localhost:3300/users").subscribe(res => {
+    this.http.get(`${this.baseUrl}/users`).subscribe(res => {
       this.apiResponse = JSON.stringify(res);
       console.log(res);
     });
@@ -139,8 +146,11 @@ export class AppComponent {
 
   /* Obtenemos el mail principal del usuario y lo insertamos en la DB */
   mail() {
+
+    const headers = new HttpHeaders({'Content-Type':'application/json; charset=utf-8'});
+
     this.http.get<Mail>("https://graph.microsoft.com/v1.0/me/mail").subscribe((mail) => {
-      const apiResponse = JSON.stringify(mail.value);
+      this.apiResponse = JSON.stringify(mail.value);
 
       /* Se Obtiene el valor de la Oficina administrativa y lo insertamos en la DB */
       this.http.get<OfficeLocation>("https://graph.microsoft.com/v1.0/me/officeLocation").subscribe(officeLocation => {
@@ -151,7 +161,7 @@ export class AppComponent {
           this.apiResponse = JSON.stringify(displayName.value);
 
           /* Insertamos los valores obtenidos de la APIGraph y los insertamos en la DB */
-          this.http.post(`http://localhost:3300/users`,
+          this.http.post(`${this.baseUrl}/users`,
             {
               username: mail.value,
               password: '',
@@ -161,13 +171,14 @@ export class AppComponent {
               sede: 'CDMX',
               subsede: 'SIER',
               cargo: 'MP'
-            })
+            },  {headers})
             .subscribe(res => {
+              this.apiResponse = JSON.stringify(res)
               console.log("Dato Enviado");
             });
 
           setTimeout(() => {
-            this.http.post(`http://localhost:3300/auth/login`,
+            this.http.post(`${this.baseUrl}/users/login`,
               {
                 username: mail.value,
                 password: ''

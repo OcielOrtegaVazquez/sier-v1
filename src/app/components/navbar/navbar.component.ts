@@ -53,24 +53,13 @@ export class NavbarComponent implements OnInit {
                 ]
             },
             {
-                label: 'Actions',
+                label: 'Admin',
                 icon: 'pi pi-fw pi-cog',
                 items: [
                     {
-                        label: 'Edit',
-                        icon: 'pi pi-fw pi-pencil',
-                        items: [
-                            { label: 'Save', icon: 'pi pi-fw pi-save' },
-                            { label: 'Update', icon: 'pi pi-fw pi-save' },
-                        ]
+                        label: 'Usuarios', icon: 'pi pi-pi pi-users', routerLink: "/users"
                     },
-                    {
-                        label: 'Other',
-                        icon: 'pi pi-fw pi-tags',
-                        items: [
-                            { label: 'Delete', icon: 'pi pi-fw pi-minus' }
-                        ]
-                    }
+                    
                 ]
             }
         ];

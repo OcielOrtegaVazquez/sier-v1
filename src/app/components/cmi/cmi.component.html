@@ -14,13 +14,16 @@
             <mat-form-field appearance="fill" style="margin-left: 1.5rem;">
                 <mat-label>Selecciona el Rango de Fechas</mat-label>
                 <mat-date-range-input [rangePicker]="picker">
-                    <input matStartDate formControlName="startDate" placeholder="Start date" required>
-                    <input matEndDate formControlName="endDate" placeholder="End date" required>
+                    <input matStartDate formControlName="startDate" required>
+                    <input matEndDate formControlName="endDate" required>
                 </mat-date-range-input>
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-date-range-picker #picker></mat-date-range-picker>
             </mat-form-field>
             <button class="btn btn-primary" type="submit" [disabled]="!cmi.valid" style="margin-left: 5rem;">Descargar Registros</button>
         </form>
+        <ngx-spinner type="ball-scale-multiple">
+            <h2 style="height: 1.5rem; color: yellow; ">Generando Reporte</h2>
+        </ngx-spinner>
     </div>
 </div>

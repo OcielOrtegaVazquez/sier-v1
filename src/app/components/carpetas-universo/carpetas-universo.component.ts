@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, ViewChild } from '@angular/core';
 
 /* Importamos el servicio CarpetaInvestigacion */
 import { CarpetaInvestigacionService } from '../../services/carpeta-investigacion.service';
@@ -9,6 +9,8 @@ import { CarpetaInvestigacion } from '../../interfaces/carpeta-investigacion';
 /* Importamos libreria para exportar archivos CSV y EXCEL */
 import * as FileSaver from 'file-saver';
 
+/* Importar Table de PrimeNg */
+import { Table } from 'primeng/table';
 
 @Component({
   selector: 'app-carpetas-universo',
@@ -18,7 +20,7 @@ import * as FileSaver from 'file-saver';
 export class CarpetasUniversoComponent implements OnInit {
 
   /* declaramos una variable para el arreglo de carpetas */
- carpetas: CarpetaInvestigacion[] = [];
+  carpeta: CarpetaInvestigacion[] = [];
 
   /* declaramos una variable para el loader */
   loading: boolean;
@@ -37,83 +39,83 @@ export class CarpetasUniversoComponent implements OnInit {
   /* Declaramos el arreglo para exportar las columnas en excel */
   exportColumns: any[];
 
+  @ViewChild('dt') table: Table;
+
   constructor(
-    private carpetaInvestigacionService : CarpetaInvestigacionService
-  ) {  }
+    private carpetaInvestigacionService: CarpetaInvestigacionService
+  ) { }
 
-ngOnInit(): void {
-  this.getCarpetas2020();
- }
+  ngOnInit(): void {
+    this.getCarpetas2020();
+  }
 
- /* Creamos la funcion para hacer el llamado del universo de carpetas getCarpetas2020 */
-getCarpetas2020(){
-  this.loading = true;
-  this.carpetaInvestigacionService.getCarpetas2020()
-  .subscribe(
-    data =>{
-      this.carpetas = data;
+  /* Creamos la funcion para hacer el llamado del universo de carpetas getCarpetas2020 */
+  getCarpetas2020() {
+    this.loading = true;
+    this.carpetaInvestigacionService.getCarpetas2020().then(carpetas => {
+      this.carpeta = carpetas
       this.loading = false;
-    }
-  )
-  this.cols = [
-    { field: 'idRow', header: 'idRow' },
-    { field: 'NumCar', header: 'NumCar' },
-    { field: 'FechaCI', header: 'FechaCI' },
-    { field: 'EdoJur', header: 'EdoJur' },      
-    { field: 'Ley', header: 'Ley' },
-    { field: 'Articulo', header: 'Articulo' },
-    { field: 'TipoDelito', header: 'TipoDelito' },
-    { field: 'Hecho', header: 'Hecho' },
-    { field: 'ModalidadDelito', header: 'ModalidadDelito' }
-];
+      console.log(carpetas);
+    });
+    this.cols = [
+      { field: 'idRow', header: 'idRow' },
+      { field: 'NumCar', header: 'NumCar' },
+      { field: 'FechaCI', header: 'FechaCI' },
+      { field: 'EdoJur', header: 'EdoJur' },
+      { field: 'Ley', header: 'Ley' },
+      { field: 'Articulo', header: 'Articulo' },
+      { field: 'TipoDelito', header: 'TipoDelito' },
+      { field: 'Hecho', header: 'Hecho' },
+      { field: 'ModalidadDelito', header: 'ModalidadDelito' }
+    ];
 
-this.exportColumns = this.cols.map(col => ({title: col.header, dataKey: col.field}));
+    this.exportColumns = this.cols.map(col => ({ title: col.header, dataKey: col.field }));
 
-}
+  }
 
-/* Paginador siguiente */
-next(){
-  this.first = this.first + this.rows;
-}
+  /* Paginador siguiente */
+  next() {
+    this.first = this.first + this.rows;
+  }
 
-/* Paginador atras */
-prev(){
-  this.first = this.first - this.rows;
-}
+  /* Paginador atras */
+  prev() {
+    this.first = this.first - this.rows;
+  }
 
-/* Reiniciar paginador */
-reset(){
-  this.first = 0;
-}
+  /* Reiniciar paginador */
+  reset() {
+    this.first = 0;
+  }
 
-/* Estando en la ultima página */
-isLastPage(){
-  return this.carpetas ? this.first === (this.carpetas.length - this.rows): true;
-}
+  /* Estando en la ultima página */
+  isLastPage() {
+    return this.carpeta ? this.first === (this.carpeta.length - this.rows) : true;
+  }
 
-/* Estando en la Primer página */
-isFirstPage(){
-  return this.carpetas ? this.first === 0 : true;
-}
+  /* Estando en la Primer página */
+  isFirstPage() {
+    return this.carpeta ? this.first === 0 : true;
+  }
 
-/* Exportar el universo de la consulta en excel */
-exportExcel() {
-  import("xlsx").then(xlsx => {
-      const worksheet = xlsx.utils.json_to_sheet(this.carpetas);
+  /* Exportar el universo de la consulta en excel */
+  exportExcel() {
+    import("xlsx").then(xlsx => {
+      const worksheet = xlsx.utils.json_to_sheet(this.carpeta);
       const workbook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
       const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
       this.saveAsExcelFile(excelBuffer, "Universo_Carpetas_2020");
-  });
-}
+    });
+  }
 
-/* Exportar los datos filtrados del universo en CSV */
-saveAsExcelFile(buffer: any, fileName: string): void {
-  let EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
-  let EXCEL_EXTENSION = '.xlsx';
-  const data: Blob = new Blob([buffer], {
+  /* Exportar los datos filtrados del universo en CSV */
+  saveAsExcelFile(buffer: any, fileName: string): void {
+    let EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+    let EXCEL_EXTENSION = '.xlsx';
+    const data: Blob = new Blob([buffer], {
       type: EXCEL_TYPE
-  });
-  FileSaver.saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
-}
+    });
+    FileSaver.saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
+  }
 
 }

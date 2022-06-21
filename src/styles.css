@@ -32,7 +32,8 @@ body {
     }
 }
 
-@-moz-keyframes fadeIn {
+
+/* @-moz-keyframes fadeIn {
     from {
         transform: scale(0, 0);
     }
@@ -66,7 +67,7 @@ body {
     to {
         transform: scale(1, 1);
     }
-}
+} */
 
 
 /* Estilo COPLADII */
