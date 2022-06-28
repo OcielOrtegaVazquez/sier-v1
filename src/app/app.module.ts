@@ -75,6 +75,10 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { InterceptorService } from './services/interceptor.service';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 
+/* Local Storage */
+import { CoolStorageModule } from '@angular-cool/storage';
+import { AuthService } from './services/auth.service';
+
 /* Exportar funcion con datos de la aplicacion en portal Azure */
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
@@ -155,7 +159,8 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     ToolbarModule,
     FileUploadModule,
     ConfirmDialogModule,
-    RatingModule
+    RatingModule,
+    CoolStorageModule
   ],
   providers: [ExcelService,
     {
@@ -176,7 +181,9 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
       multi: true
-    }    
+    },{
+      provide: AuthService
+    }   
   ],
   bootstrap: [AppComponent],
  

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PublicPageComponent } from './public-page/public-page.component';
 import { RestrictedPageComponent } from './restricted-page/restricted-page.component';
 import { MaslGuard } from './masl.guard';
+import { AuthGuard } from './auth.guard';
 import { CarpetaInvestigacionComponent } from './components/carpeta-investigacion/carpeta-investigacion.component';
 import { CarpetasUniversoComponent } from './components/carpetas-universo/carpetas-universo.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -15,7 +16,6 @@ import { EstructuraFecorComponent } from './components/estructura-fecor/estructu
 import { CmiComponent } from './components/cmi/cmi.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 
-
 const routes: Routes = [
   {path : '',                   component: CarpetaInvestigacionComponent, canActivate: [MaslGuard]},
   {path : 'carpeta',            component: CarpetaInvestigacionComponent, canActivate: [MaslGuard]},
@@ -27,7 +27,7 @@ const routes: Routes = [
   {path : 'plan-investigacion', component: FecorComponent, canActivate: [MaslGuard]},
   {path : 'estructura-fecor',   component: EstructuraFecorComponent, canActivate: [MaslGuard]},
   {path : 'cmi',                component: CmiComponent, canActivate: [MaslGuard]},
-  {path : 'users',              component: UsuariosComponent, canActivate: [MaslGuard]},
+  {path : 'users',              component: UsuariosComponent, data: {role: 'admin'}, canActivate: [MaslGuard, AuthGuard]},
   {path: 'restricted-page',     component: RestrictedPageComponent, canActivate: [MaslGuard]},
   {path : '**',                 component: NotFoundComponent},
 ];

@@ -43,11 +43,19 @@ export class AppComponent {
 
   /* Prime Faces */
   userDialog: boolean = true;
+  userService: any;
+  user ='1';
+  constructor(private msalBroadcastService: MsalBroadcastService,
+              private authService: MsalService,
+              private http: HttpClient,
+              private router: Router,
+              private usuarioService: UsuarioService,
+           
+  ) {  }
 
-  constructor(private msalBroadcastService: MsalBroadcastService, private authService: MsalService, private http: HttpClient, private router: Router, private usuarioService: UsuarioService,
-  ) {
-  }
   ngOnInit(): void {
+ 
+    //localStorage.setItem('SeesionUser',this.res)
 
     this.msalBroadcastService.inProgress$
       .pipe(
@@ -64,6 +72,8 @@ export class AppComponent {
     this.getName();
     /* this.callProfile(); */
     /* this.getAll();  */
+
+
   }
 
   checkAndSetActiveAccount() {
@@ -111,7 +121,6 @@ export class AppComponent {
     if (this.authService.instance.getActiveAccount() == null) {
       return 'unknown'
     }
-
     return this.authService.instance.getActiveAccount().name
   }
 
@@ -181,9 +190,8 @@ export class AppComponent {
             this.http.post(`${this.baseUrl}/users/login`,
               {
                 username: mail.value,
-                password: ''
+                password: 'Usytem@Reveco.fgr.org'
               }).subscribe(res => {
-
                 console.log("sesion Iniciada");
                 console.log("-------------------------------------------");
                 console.log("***** Mail: " + mail.value + " *****");
@@ -193,14 +201,23 @@ export class AppComponent {
                 console.log("***** Unidad Administrativa: " + officeLocation.value + " *****");
                 console.log("-------------------------------------------");
                 console.log(res);
-              });
-          }, 1000)
+                console.log(res[0].id);
+                localStorage.setItem("userActive", JSON.stringify(res));
 
+              });
+          }, 1000);
         });
       });
     });
   }
 
+  userLogged(id: number) {   
+      this.userService.sesionUser(id).subscribe( userLogged => {
+        this.apiResponse = JSON.stringify(userLogged)
+        console.log(userLogged);
+      });    
+  }
+ 
   /* Obtener Mails Recientes */
   callMessages() {
     this.http.get("https://graph.microsoft.com/v1.0/me/messages").subscribe(resp => {

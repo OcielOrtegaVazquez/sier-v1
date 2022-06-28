@@ -51,4 +51,10 @@ export class UsuarioService {
     var body = {...user}
     return this.http.put<any>(`${this.baseUrl}/update` ,{body} , {headers});
   }
+  
+  sesionUser(id){
+    const headers = new HttpHeaders({'Content-Type':'application/json; charset=utf-8'});
+    return this.http.get<any>(`${this.baseUrl}/users/${id}`, {headers});
+  }
+
 }
