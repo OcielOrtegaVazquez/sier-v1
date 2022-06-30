@@ -15,6 +15,8 @@ import { FecorComponent } from './components/fecor/fecor.component';
 import { EstructuraFecorComponent } from './components/estructura-fecor/estructura-fecor.component';
 import { CmiComponent } from './components/cmi/cmi.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { ResumenCMIComponent } from './components/resumen-cmi/resumen-cmi.component';
+import { MsalGuard } from '@azure/msal-angular';
 
 const routes: Routes = [
   {path : '',                   component: CarpetaInvestigacionComponent, canActivate: [MaslGuard]},
@@ -27,8 +29,9 @@ const routes: Routes = [
   {path : 'plan-investigacion', component: FecorComponent, canActivate: [MaslGuard]},
   {path : 'estructura-fecor',   component: EstructuraFecorComponent, canActivate: [MaslGuard]},
   {path : 'cmi',                component: CmiComponent, canActivate: [MaslGuard]},
+  {path : 'resumen-cmi',        component: ResumenCMIComponent, canActivate: [MaslGuard]},
   {path : 'users',              component: UsuariosComponent, data: {role: 'admin'}, canActivate: [MaslGuard, AuthGuard]},
-  {path: 'restricted-page',     component: RestrictedPageComponent, canActivate: [MaslGuard]},
+  {path : 'restricted-page',    component: RestrictedPageComponent, canActivate: [MaslGuard]},
   {path : '**',                 component: NotFoundComponent},
 ];
 

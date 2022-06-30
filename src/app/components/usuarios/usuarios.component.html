@@ -1,61 +1,63 @@
 <!-- Prime Faces CRUD -->
 <p-toast></p-toast>
 <!-- MAterial -->
-<div class="col-16" style="margin-top: 1rem;">
+<div class="fade-in-logo">
+    <div class="col-16" style="margin-top: 1rem;">
 
-    <mat-toolbar color="accent" style="box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);">
-        <div align="center" style="text-align: right;">
-            <h1>Usuarios</h1>
-        </div>
-        &nbsp;
-        <mat-form-field style="margin-left: auto;">
-            <input matInput (keyup)="applyFilter($event)" placeholder="Buscar Usuario">
-        </mat-form-field>
-    </mat-toolbar>
-
-    <!-- Formulario Actualizacion -->
-    <div style="margin-top: .5rem;" align=" center">
-
-        <form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)">
-
-            <div class="row" style="background-color: white; margin-left: .1rem; margin-right: .1rem;">
-                <div class="col-3" style="margin-top: 1rem; margin-bottom: 1rem">
-                    <label style="margin-right: 1rem" for="Nombre">Nombre: </label>
-                    <input id="nombre" type="text" formControlName="Nombre" required>
-                </div>
-
-                <div class="col-3" style="margin-top: 1rem; margin-bottom: 1rem">
-                    <label style="margin-right: 1rem" for="Correo">Correo: </label>
-                    <input id="correo" type="email" formControlName="Correo" required>
-                </div>
-
-                <div class="col-3" style="margin-top: 1rem; margin-bottom: 1rem">
-                    <label style="margin-right: 1rem" for="Unidad">Unidad: </label>
-                    <input id="unidad" type="text" formControlName="Unidad" required>
-                </div>
-                <div class="col-3" style="margin-top: 1rem; margin-bottom: 1rem">
-                    <label style="margin-right: 1rem" for="Sede">Sede: </label>
-                    <input id="sede" type="text" formControlName="Sede" required>
-                </div>
-
-                <div class="col-3" style="margin-top: 1rem; margin-bottom: 1rem">
-                    <label style="margin-right: 1rem" for="Subsede">Subsede: </label>
-                    <input id="subsede" type="text" formControlName="Subsede" required>
-                </div>
-                <div class="col-3" style="margin-top: 1rem; margin-bottom: 1rem">
-                    <label style="margin-right: 1rem" for="Cargo">Cargo: </label>
-                    <input id="cargo" type="text" formControlName="Cargo">
-                </div>
-                <div class="col-3" style="margin-top: 1rem; margin-bottom: 1rem">
-                    <label style="margin-right: 3rem" for="Nombre">Rol: </label>
-                    <input id="rol" type="text" formControlName="Rol" required>
-                </div>
-                <div class="col-3" style="margin-top: 1rem; margin-bottom: 1rem">
-                    <button mat-raised-button color="accent" style="margin-right: 1rem; margin-left: 4rem;" type="submit">Actualizar</button>
-                    <button type="reset" button mat-raised-button color="warn" matTooltip="Reset" (click)="resetForm()">Limpiar</button>
-                </div>
+        <mat-toolbar color="accent" style="box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);">
+            <div align="center" style="text-align: right;">
+                <h1>Administración de Usuarios</h1>
             </div>
-        </form>
+            &nbsp;
+            <mat-form-field style="margin-left: auto;">
+                <input matInput (keyup)="applyFilter($event)" placeholder="Buscar Usuario">
+            </mat-form-field>
+        </mat-toolbar>
+
+        <!-- Formulario Actualizacion -->
+        <div style="margin-top: .5rem;" align=" center">
+
+            <form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)">
+
+                <div class="row" style="background-color: white; margin-left: .1rem; margin-right: .1rem;">
+                    <div class="col-3" style="margin-top: 1rem; margin-bottom: 1rem">
+                        <label style="margin-right: 1rem" for="Nombre">Nombre: </label>
+                        <input id="nombre" type="text" formControlName="Nombre" required>
+                    </div>
+
+                    <div class="col-3" style="margin-top: 1rem; margin-bottom: 1rem">
+                        <label style="margin-right: 1rem" for="Correo">Correo: </label>
+                        <input id="correo" type="email" formControlName="Correo" required>
+                    </div>
+
+                    <div class="col-3" style="margin-top: 1rem; margin-bottom: 1rem">
+                        <label style="margin-right: 1rem" for="Unidad">Unidad: </label>
+                        <input id="unidad" type="text" formControlName="Unidad" required>
+                    </div>
+                    <div class="col-3" style="margin-top: 1rem; margin-bottom: 1rem">
+                        <label style="margin-right: 1rem" for="Sede">Sede: </label>
+                        <input id="sede" type="text" formControlName="Sede" required>
+                    </div>
+
+                    <div class="col-3" style="margin-top: 1rem; margin-bottom: 1rem">
+                        <label style="margin-right: 1rem" for="Subsede">Subsede: </label>
+                        <input id="subsede" type="text" formControlName="Subsede" required>
+                    </div>
+                    <div class="col-3" style="margin-top: 1rem; margin-bottom: 1rem">
+                        <label style="margin-right: 1rem" for="Cargo">Cargo: </label>
+                        <input id="cargo" type="text" formControlName="Cargo">
+                    </div>
+                    <div class="col-3" style="margin-top: 1rem; margin-bottom: 1rem">
+                        <label style="margin-right: 3rem" for="Nombre">Rol: </label>
+                        <input id="rol" type="text" formControlName="Rol" required>
+                    </div>
+                    <div class="col-3" style="margin-top: 1rem; margin-bottom: 1rem">
+                        <button mat-raised-button color="accent" style="margin-right: 1rem; margin-left: 4rem;" type="submit">Actualizar</button>
+                        <button type="reset" button mat-raised-button color="warn" matTooltip="Reset" (click)="resetForm()">Limpiar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 
     <!-- ---------------------- -->

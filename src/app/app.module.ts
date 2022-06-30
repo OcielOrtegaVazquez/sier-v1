@@ -78,6 +78,7 @@ import { UsuariosComponent } from './components/usuarios/usuarios.component';
 /* Local Storage */
 import { CoolStorageModule } from '@angular-cool/storage';
 import { AuthService } from './services/auth.service';
+import { ResumenCMIComponent } from './components/resumen-cmi/resumen-cmi.component';
 
 /* Exportar funcion con datos de la aplicacion en portal Azure */
 export function MSALInstanceFactory(): IPublicClientApplication {
@@ -118,7 +119,8 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     FecorComponent,
     EstructuraFecorComponent,
     CmiComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    ResumenCMIComponent
   ],
   imports: [
     BrowserModule,

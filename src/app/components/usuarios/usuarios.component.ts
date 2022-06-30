@@ -15,7 +15,6 @@ import { Validators } from '@angular/forms';
 
 const users: Usuario[] = [];
 
-
 @Component({
   selector: 'app-usuarios',
   templateUrl: './usuarios.component.html',
