@@ -60,7 +60,9 @@ export class NavbarComponent implements OnInit {
                     {
                         label: 'Usuarios', icon: 'pi pi-pi pi-users', routerLink: "/users"
                     },
-                    
+                    {
+                        label: 'Vistas PFM', icon: 'pi pi-fw pi-database', routerLink: "/descarga-pfm"
+                    }                    
                 ]
             }
         ];

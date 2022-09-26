@@ -8,9 +8,9 @@
             <p-button type="button" icon="pi pi-refresh" (click)="reset()" styleClass="p-button-text"></p-button>
             <p-button type="button" icon="pi pi-chevron-right" (click)="next()" [disabled]="isLastPage()" styleClass="p-button-text"></p-button>
 
-            <button style="margin-left: 1rem;" type="button" label="CSV" pButton pRipple icon="pi pi-file-o" (click)="dtCarpetas.exportCSV()" class="p-mr-2" pTooltip="Descargar Universo 2021 CSV"></button>
-            <button style="margin-left: 1rem;" type="button" label="XLSX" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class="p-button-success p-ml-3 p-mr-2" pTooltip="Descargar Universo 2021"></button>
-            <button style="margin-left: 1rem;" type="button" label="FILTRADO" pButton pRipple icon="pi pi-filter" (click)="dtCarpetas.exportCSV({selectionOnly:true})" class="p-button-info p-ml-auto" pTooltip="Descargar Elementos Seleccionados" tooltipPosition="bottom"></button>
+            <button style="margin-left: 1rem;" type="button" label="CSV" pButton pRipple icon="pi pi-file-o" (click)="dtCarpetas.exportCSV()" class="primary p-mr-2" pTooltip="Descargar Universo 2021 CSV"></button>
+            <button style="margin-left: 1rem;" type="button" label="XLSX" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class="p-button-secondary p-ml-3 p-mr-2" pTooltip="Descargar Universo 2021"></button>
+            <button style="margin-left: 1rem;" type="button" label="FILTRADO" pButton pRipple icon="pi pi-filter" (click)="dtCarpetas.exportCSV({selectionOnly:true})" class="p-button-help p-ml-auto" pTooltip="Descargar Elementos Seleccionados" tooltipPosition="bottom"></button>
             <br>
             <br>
         </div>

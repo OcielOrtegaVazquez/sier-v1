@@ -6,8 +6,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 import * as moment from 'moment';
 import { ExcelService } from '../../services/excel.service';
 import { SpinnerService } from '../../services/spinner.service';
-import { MatStartDate } from '@angular/material/datepicker';
-import { JsonPipe } from '@angular/common';
 
 /* Enviroment */
 import { environment } from 'src/environments/environment';

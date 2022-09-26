@@ -23,7 +23,7 @@ const users: Usuario[] = [];
 })
 export class UsuariosComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'displayName', 'mail', 'officeLocation', 'role', 'sede', 'subsede', 'cargo', 'edit'];
+  displayedColumns: string[] = ['id', 'displayName','titulo_profesional', 'mail', 'officeLocation', 'role', 'sede', 'subsede', 'cargo','activo', 'envio_correo', 'edit'];
   dataSource: MatTableDataSource<Usuario>;
 
   user: Usuario;
@@ -39,11 +39,14 @@ export class UsuariosComponent implements OnInit {
       Id: [""],
       Correo: ["", [Validators.required, Validators.email]],
       Nombre : [""],
+      Activo: [""],
+      Titulo_Profesional: [""],
       Rol: [""],
       Unidad: [""],
       Sede: [""],
       Subsede: [""],
       Cargo: [""],
+      Envio_Correo: [""]
   });
    }
 
@@ -73,12 +76,15 @@ export class UsuariosComponent implements OnInit {
       this.apiResponse = resUser;
       this.userForm.controls['Id'].setValue(this.apiResponse[0].id);
       this.userForm.controls['Nombre'].setValue(this.apiResponse[0].nombre);
+      this.userForm.controls['Activo'].setValue(this.apiResponse[0].activo);
+      this.userForm.controls['Titulo_Profesional'].setValue(this.apiResponse[0].titulo_profesional);
       this.userForm.controls['Correo'].setValue(this.apiResponse[0].username);
       this.userForm.controls['Unidad'].setValue(this.apiResponse[0].u_admin);
       this.userForm.controls['Sede'].setValue(this.apiResponse[0].sede);
       this.userForm.controls['Subsede'].setValue(this.apiResponse[0].subsede);
       this.userForm.controls['Cargo'].setValue(this.apiResponse[0].cargo);
-      this.userForm.controls['Rol'].setValue(this.apiResponse[0].role)
+      this.userForm.controls['Rol'].setValue(this.apiResponse[0].role);
+      this.userForm.controls['Envio_Correo'].setValue(this.apiResponse[0].envio_correo);
      });
        
   }
@@ -95,11 +101,14 @@ export class UsuariosComponent implements OnInit {
               username: this.userForm.controls['Correo'].value,
               password: '',
               nombre: this.userForm.controls['Nombre'].value,
+              activo: this.userForm.controls['Activo'].value,
+              titulo_profesional: this.userForm.controls['Titulo_Profesional'].value,
               role: this.userForm.controls['Rol'].value,
               u_admin: this.userForm.controls['Unidad'].value,
               sede: this.userForm.controls['Sede'].value,
               subsede: this.userForm.controls['Subsede'].value,
-              cargo: this.userForm.controls['Cargo'].value
+              cargo: this.userForm.controls['Cargo'].value,
+              envio_correo: this.userForm.controls['Envio_Correo'].value
     }, {headers}).subscribe( updateUser => {
     this.apiResponse = JSON.stringify(updateUser);      
     console.log( "Datos Actualizados Correctamente ==== >");

@@ -5,6 +5,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { ExcelService } from './services/excel.service';
+import { NgTerminalModule } from 'ng-terminal';
+import { TerminalModule, TerminalService } from 'primeng/terminal';
+import { NgxChildProcessModule } from 'ngx-childprocess';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 /* Importamos las instancias */
 import { MsalModule, MsalService, MSAL_INSTANCE } from '@azure/msal-angular';
@@ -80,6 +84,10 @@ import { CoolStorageModule } from '@angular-cool/storage';
 import { AuthService } from './services/auth.service';
 import { ResumenCMIComponent } from './components/resumen-cmi/resumen-cmi.component';
 
+/* Ngx- Charts */
+import { ChartsModule } from 'ng2-charts';
+import { PFMViewsComponent } from './components/pfmviews/pfmviews.component';
+
 /* Exportar funcion con datos de la aplicacion en portal Azure */
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
@@ -120,7 +128,8 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     EstructuraFecorComponent,
     CmiComponent,
     UsuariosComponent,
-    ResumenCMIComponent
+    ResumenCMIComponent,
+    PFMViewsComponent
   ],
   imports: [
     BrowserModule,
@@ -162,7 +171,12 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     FileUploadModule,
     ConfirmDialogModule,
     RatingModule,
-    CoolStorageModule
+    CoolStorageModule,
+    ChartsModule,
+    NgTerminalModule,
+    TerminalModule,
+    NgxChildProcessModule,
+    SweetAlert2Module.forRoot()
   ],
   providers: [ExcelService,
     {
@@ -185,8 +199,10 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
       multi: true
     },{
       provide: AuthService
-    }   
-  ],
+    },{
+      provide : TerminalService
+    }
+  ], 
   bootstrap: [AppComponent],
  
 })

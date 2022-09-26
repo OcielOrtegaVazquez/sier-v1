@@ -94,16 +94,16 @@ body {
 .container .box .title .block {
     width: 0%;
     height: inherit;
-    background: #c42847;
+    background: #ffffff;
     position: absolute;
     animation: mainBlock 2s cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards;
     display: flex;
 }
 
 .container .box .title h1 {
-    font-family: 'Poppins';
+    font-family: 'Raleway-bold', sans-serif;
     font-weight: 600;
-    color: rgb(179, 40, 45);
+    color: rgb(255, 255, 255);
     font-size: 70px;
     -webkit-animation: mainFadeIn 2s forwards;
     -o-animation: mainFadeIn 2s forwards;
@@ -113,23 +113,6 @@ body {
     display: flex;
     align-items: baseline;
     position: relative;
-}
-
-.container .box .title h1 span {
-    width: 0px;
-    height: 0px;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
-    background: #c42847;
-    -webkit-animation: load 0.6s cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards;
-    animation: popIn 0.8s cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards;
-    animation-delay: 2s;
-    margin-left: 5px;
-    margin-top: -10px;
-    position: absolute;
-    bottom: 13px;
-    right: -12px;
 }
 
 .container .box .role {
@@ -144,7 +127,7 @@ body {
 .container .box .role .block {
     width: 0%;
     height: inherit;
-    background: #1098F7;
+    background: #001aff;
     position: absolute;
     animation: secBlock 2s cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards;
     animation-delay: 2s;
@@ -155,9 +138,9 @@ body {
     animation: secFadeIn 2s forwards;
     animation-delay: 3.2s;
     opacity: 5;
-    font-weight: 800;
+    font-weight: 900;
     font-family: 'Montserrat';
-    color: #1098F7;
+    color: #001aff;
     font-size: 40px;
     text-transform: uppercase;
     letter-spacing: 5px;

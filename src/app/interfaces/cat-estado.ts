@@ -1,5 +1,4 @@
-export interface CatEstado {
-    id: number;
-    cve: string;
-    nombre: string;
+export class CatEstado {
+    
+    constructor ( public id: number, public cve: string, public nombre: string,){}
 }

@@ -90,6 +90,14 @@
         </mat-form-field>
     </mat-toolbar>
 
+    <!-- Grafica -->
+    <div style="width: auto; background-color: whitesmoke;">
+        <div style="width: 75%; background-color: whitesmoke; margin-top: .5rem; margin-left: auto; margin-right: auto;">
+            <canvas id="canvas">{{chart}}
+            </canvas>
+        </div>
+    </div>
+
     <!-- Tabla de Resumen -->
 
     <table mat-table [dataSource]="dataSourceErrors" matSort style="margin-top: .2rem; ">

@@ -17,6 +17,7 @@ import { CmiComponent } from './components/cmi/cmi.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { ResumenCMIComponent } from './components/resumen-cmi/resumen-cmi.component';
 import { MsalGuard } from '@azure/msal-angular';
+import { PFMViewsComponent } from './components/pfmviews/pfmviews.component';
 
 const routes: Routes = [
   {path : '',                   component: CarpetaInvestigacionComponent, canActivate: [MaslGuard]},
@@ -31,6 +32,7 @@ const routes: Routes = [
   {path : 'cmi',                component: CmiComponent, canActivate: [MaslGuard]},
   {path : 'resumen-cmi',        component: ResumenCMIComponent, canActivate: [MaslGuard]},
   {path : 'users',              component: UsuariosComponent, data: {role: 'admin'}, canActivate: [MaslGuard, AuthGuard]},
+  {path : 'descarga-pfm',       component: PFMViewsComponent, data: {role: 'admin'}, canActivate: [MaslGuard, AuthGuard]},
   {path : 'restricted-page',    component: RestrictedPageComponent, canActivate: [MaslGuard]},
   {path : '**',                 component: NotFoundComponent},
 ];

@@ -10,7 +10,7 @@
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:application": {
-                    "strict": true
+                    "strict": false
                 }
             },
             "root": "",
@@ -21,7 +21,8 @@
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
                         "allowedCommonJsDependencies": [
-                            "xlsx"
+                            "xlsx",
+                            "chart.js"
                         ],
                         "outputPath": "dist/FGR-GRID-V2",
                         "index": "src/index.html",
@@ -43,6 +44,7 @@
                             "node_modules/ngx-spinner/animations/ball-scale-multiple.css"
                         ],
                         "scripts": [
+                            "node_modules/chart.js/dist/Chart.min.js",
                             "node_modules/jquery/dist/jquery.min.js",
                             "node_modules/@popperjs/core/dist/umd/popper.min.js",
                             "node_modules/bootstrap/dist/js/bootstrap.min.js"

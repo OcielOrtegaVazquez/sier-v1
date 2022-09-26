@@ -29,6 +29,15 @@
                         <label style="margin-right: 1rem" for="Correo">Correo: </label>
                         <input id="correo" type="email" formControlName="Correo" required>
                     </div>
+                    <div class="col-3" style="margin-top: 1rem; margin-bottom: 1rem">
+                        <label style="margin-right: 1rem" for="Activo">Activo: </label>
+                        <input id="activo" type="texto" formControlName="Activo" required>
+                    </div>
+
+                    <div class="col-3" style="margin-top: 1rem; margin-bottom: 1rem">
+                        <label style="margin-right: 1rem" for="Titulo_Profesional">Titulo Profesional: </label>
+                        <input id="titulo_profesional" type="texto" formControlName="Titulo_Profesional" required>
+                    </div>
 
                     <div class="col-3" style="margin-top: 1rem; margin-bottom: 1rem">
                         <label style="margin-right: 1rem" for="Unidad">Unidad: </label>
@@ -52,8 +61,12 @@
                         <input id="rol" type="text" formControlName="Rol" required>
                     </div>
                     <div class="col-3" style="margin-top: 1rem; margin-bottom: 1rem">
-                        <button mat-raised-button color="accent" style="margin-right: 1rem; margin-left: 4rem;" type="submit">Actualizar</button>
-                        <button type="reset" button mat-raised-button color="warn" matTooltip="Reset" (click)="resetForm()">Limpiar</button>
+                        <label style="margin-right: 1rem" for="Envio_correo">Envío Correo:</label>
+                        <input id="envio_correo" type="text" formControlName="Envio_Correo" required>
+                    </div>
+                    <div class="col-3" style="margin-top: 1rem; margin-bottom: 1rem">
+                        <button mat-raised-button color="primary" style="margin-right: 1rem; margin-left: 4rem;" type="submit">Actualizar</button>
+                        <button type="reset" mat-raised-button color="accent" matTooltip="Reset" (click)="resetForm()">Limpiar</button>
                     </div>
                 </div>
             </form>
@@ -96,6 +109,18 @@
             <td mat-cell *matCellDef="let element"> {{element.role}} </td>
         </ng-container>
 
+        <!-- activo Column -->
+        <ng-container matColumnDef="activo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Activo </th>
+            <td mat-cell *matCellDef="let element"> {{element.activo}} </td>
+        </ng-container>
+
+        <!-- Titulo Column -->
+        <ng-container matColumnDef="titulo_profesional">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Título</th>
+            <td mat-cell *matCellDef="let element"> {{element.titulo_profesional}} </td>
+        </ng-container>
+
         <!-- Sede Column -->
         <ng-container matColumnDef="sede">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Sede </th>
@@ -114,11 +139,17 @@
             <td mat-cell *matCellDef="let element"> {{element.cargo}} </td>
         </ng-container>
 
+        <!-- Envío Correo Column -->
+        <ng-container matColumnDef="envio_correo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Envío Correo </th>
+            <td mat-cell *matCellDef="let element"> {{element.envio_correo}} </td>
+        </ng-container>
+
         <!-- Edit Column -->
         <ng-container matColumnDef="edit">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
             <mat-cell *matCellDef="let usuario">
-                <button style="margin-right: 1rem;" mat-icon-button aria-label="Example icon button with a vertical three dot icon" type="button" mat-raised-button color="accent" matTooltip="Edit" (click)="loadUserEdit(usuario.id)">
+                <button style="margin-right: 1rem;" mat-icon-button aria-label="Example icon button with a vertical three dot icon" type="button" mat-raised-button color="primary" matTooltip="Edit" (click)="loadUserEdit(usuario.id)">
                     <mat-icon>edit</mat-icon>
                 </button>
                 <button style="margin-right: 1rem;" mat-icon-button aria-label="Example icon button with a delete icon" type="button" mat-raised-button color="accent" matTooltip="Delete" (click)="deleteUser(usuario.id)">

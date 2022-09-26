@@ -1,0 +1,85 @@
+<div id="htmlData" class="card fade-in-logo" style="margin-top: 1rem; opacity: .8;">
+    <div class="row col-xs-12 col-sm-12 col-md-12" style="margin-top: 1rem; margin-left: 5px; margin-bottom: 1rem;">
+        <!-- Descargar Vista CENAPI -->
+        <div class="row col-xs-3 col-sm-3 col-md-3" style="margin-top: 1rem; margin-left: 5px; margin-bottom: 1rem;">
+            <button [swal]="['Ha Iniciado la Descarga !!!', 'Puede Continuar Usando Su Equipo', 'success']" class="btn btn-primary" type="submit" (click)="getViewCENAPI(); showCENAPI()">Descargar Registros
+                CENAPI</button>
+            <div style="font-size: 1.5rem; font: weight 5px;" *ngIf="elementCENAPI">{{timeLeftCENAPI}} Segundos Restantes ....</div>
+        </div>
+
+        <!-- Descargar Vista CGSP -->
+        <div class="row col-xs-3 col-sm-3 col-md-3" style="margin-top: 1rem; margin-left: 5px; margin-bottom: 1rem;">
+            <button [swal]="['Ha Iniciado la Descarga !!!', 'Puede Continuar Usando Su Equipo', 'success']" class="btn btn-primary" type="submit" (click)="getViewCGSP(); showCGSP()">Descargar Registros
+                CGSP</button>
+            <div style="font-size: 1.5rem; font: weight 5px;" *ngIf="elementCGSP">{{timeLeftCGSP}} Segundos Restantes ....
+            </div>
+        </div>
+
+        <!-- Descargar Vista PFM_MJ -->
+        <div class="row col-xs-3 col-sm-3 col-md-3" style="margin-top: 1rem; margin-left: 5px; margin-bottom: 1rem;">
+            <button [swal]="['Ha Iniciado la Descarga !!!', 'Puede Continuar Usando Su Equipo', 'success']" class="btn btn-primary" type="submit" (click)="getViewPFM_MJ(); showPFM_MJ()">Descargar Registros
+                PFM_MJ</button>
+            <div style="font-size: 1.5rem; font: weight 5px;" *ngIf="elementPFM_MJ">{{timeLeftPFM_MJ}} Segundos Restantes ....</div>
+        </div>
+
+        <!-- Descargar Vista PFM_MM -->
+        <div class="row col-xs-3 col-sm-3 col-md-3" style="margin-top: 1rem; margin-left: 5px; margin-bottom: 1rem;">
+            <button [swal]="['Ha Iniciado la Descarga !!!', 'Puede Continuar Usando Su Equipo', 'success']" class="btn btn-primary" type="submit" (click)="getViewPFM_MM(); showPFM_MM()">Descargar Registros
+                PFM_MM</button>
+            <div style="font-size: 1.5rem; font: weight 5px;" *ngIf="elementPFM_MM">{{timeLeftPFM_MM}} Segundos Restantes ....</div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Cargar Registros a la base de Datos COPLADII -->
+
+<div id="htmlData" class="card fade-in-logo" style="margin-top: 1rem; opacity: .8;">
+    <div class="row col-xs-12 col-sm-12 col-md-12" style="margin-top: 1rem; margin-left: 5px;  margin-bottom: 1rem;">
+        <!-- Descargar Vista CENAPI -->
+        <div class="row col-xs-3 col-sm-3 col-md-3" style="margin-top: 1rem; margin-left: 5px; margin-bottom: 1rem;">
+            <button mat-raised-button [swal]="['Ha Iniciado la Carga de Registros !!!','Aceptar','success']" type="submit" color="accent" (click)="insertCENAPI()">Cargar Registros CENAPI</button>
+        </div>
+
+        <!-- Descargar Vista CGSP -->
+        <div class="row col-xs-3 col-sm-3 col-md-3" style="margin-top: 1rem; margin-left: 5px; margin-bottom: 1rem;">
+            <button mat-raised-button [swal]="['Ha Iniciado la Carga de Registros !!!','Aceptar','success']" type="submit" color="accent" (click)="insertCGSP()">Cargar Registros CGSP</button>
+        </div>
+
+        <!-- Descargar Vista PFM_MJ -->
+        <div class="row col-xs-3 col-sm-3 col-md-3" style="margin-top: 1rem; margin-left: 5px; margin-bottom: 1rem;">
+            <button mat-raised-button [swal]="['Ha Iniciado la Carga de Registros !!!','Aceptar','success']" type="submit" color="accent" (click)="insertPFM_MJ()">Cargar Registros PFM_MJ</button>
+        </div>
+
+        <!-- Descargar Vista PFM_MM -->
+        <div class="row col-xs-3 col-sm-3 col-md-3" style="margin-top: 1rem; margin-left: 5px; margin-bottom: 1rem;">
+            <button mat-raised-button [swal]="['Ha Iniciado la Carga de Registros !!!','Aceptar','success']" type="submit" color="accent" (click)="insertPFM_MM()">Cargar Registros PFM_MM</button>
+        </div>
+    </div>
+
+    <ngx-spinner type="ball-scale-multiple">
+        <h1></h1>
+        <h1 style="height: 3.5rem; color: yellow; ">Insertando Registros</h1>
+        <h1 style="height: 3.5rem; color: yellow; ">En la Base de Datos ...</h1>
+    </ngx-spinner>
+
+</div>
+
+<!-- <div class="fade-in-logo" style="margin-top: 1rem; opacity: .9;">
+    <mat-toolbar color="accent" style="box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);">
+        <div align="center" style="text-align: right; margin-right: auto;">
+            <h1>Resumen Historico de Registros PFM-AIC</h1>
+        </div>
+        &nbsp;
+        <mat-form-field style="margin-left: auto;">
+            <input matInput (keyup)="applyFilter($event)" placeholder="Buscar">
+        </mat-form-field>
+    </mat-toolbar> -->
+
+<!-- Grafica -->
+<!-- <div style="width: auto; background-color: whitesmoke;">
+    <div style="width: 75%; background-color: whitesmoke; margin-top: .5rem; margin-left: auto; margin-right: auto;">
+        <canvas id="canvas">{{chart}}
+            </canvas>
+    </div>
+</div>  -->
