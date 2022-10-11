@@ -78,13 +78,19 @@ export class PFMViewsService {
     });
   }
 
-  /* Historico PFM GRAFICA */
+  /* Historico PFM */
   historicoPFM_AIC(){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' });
-    return this.http.get<any>(`${this.baseUrl}/historico_pfm`, {headers}).toPromise().then(data => {
+    return this.http.get<any>(`${this.baseUrl}/conteo_pfm`, {headers}).toPromise().then(data => {
       return data
     });
   }
 
+  descargaHistoricoPFM_AIC(){
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' });
+    return this.http.get<any>(`${this.baseUrl}/historico-pfm`, {headers}).toPromise().then(data => {
+      return data
+    });
+  }
 
 }

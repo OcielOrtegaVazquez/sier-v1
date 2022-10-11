@@ -1,5 +1,14 @@
+<!-- Universo Datos -->
 <div id="htmlData" class="card fade-in-logo" style="margin-top: 1rem; opacity: .8;">
+
+    <mat-toolbar color="accent" style="box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);">
+        <div align="center" style="text-align: right;">
+            <h1>Descarga de Universo PFM_CMI</h1>
+        </div>
+    </mat-toolbar>
+
     <div class="row col-xs-12 col-sm-12 col-md-12" style="margin-top: 1rem; margin-left: 5px;">
+
         <form [formGroup]="cmi" novalidate (ngSubmit)="onSubmit()" #f="ngForm">
             <mat-form-field appearance="fill">
                 <mat-label>Selecciona el Repositorio</mat-label>
@@ -21,6 +30,46 @@
                 <mat-date-range-picker #picker></mat-date-range-picker>
             </mat-form-field>
             <button class="btn btn-primary" type="submit" [disabled]="!cmi.valid" style="margin-left: 5rem;">Descargar Registros</button>
+        </form>
+        <ngx-spinner type="ball-scale-multiple">
+            <h2 style="height: 1.5rem; color: yellow; ">Generando Reporte</h2>
+        </ngx-spinner>
+    </div>
+</div>
+
+
+<!-- Reporte Trimestral -->
+<div id="htmlData" class="card fade-in-logo" style="margin-top: 1rem; opacity: .8;">
+
+    <mat-toolbar color="accent" style="box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);">
+        <div align="center" style="text-align: right;">
+            <h1>Descarga Trimestral </h1>
+        </div>
+    </mat-toolbar>
+
+    <div class="row col-xs-12 col-sm-12 col-md-12" style="margin-top: 1rem; margin-left: 5px;">
+        <form [formGroup]="reporteTrimestre" novalidate (ngSubmit)="onSubmitTrimestre()" #f="ngForm">
+            <mat-form-field appearance="fill">
+                <mat-label>Selecciona la Unidad</mat-label>
+                <mat-select [(value)]="selectedUnidad" id="unidad" formControlName="unidad" required>
+                    <mat-option value=1>COPLADII_CENAPI</mat-option>
+                    <mat-option value=2>COPLADII_CGSP</mat-option>
+                    <mat-option value=3>COPLADII_PFM_MM</mat-option>
+                    <mat-option value=4>COPLADII_PFM_MJ</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" style="margin-left: 1.5rem;">
+                <mat-label>Selecciona el Trimestre</mat-label>
+                <mat-select [(value)]="selectedTrimeste" id="trimeste" formControlName="trimestre" required>
+                    <mat-option value=1>1er. Trimestre</mat-option>
+                    <mat-option value=2>2do. Trimestre</mat-option>
+                    <mat-option value=3>3er. Trimeste</mat-option>
+                    <mat-option value=4>4to. Trimeste</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <button class="btn btn-primary" type="submit" [disabled]="!reporteTrimestre.valid" style="margin-left: 5rem;">Descargar Registros</button>
         </form>
         <ngx-spinner type="ball-scale-multiple">
             <h2 style="height: 1.5rem; color: yellow; ">Generando Reporte</h2>

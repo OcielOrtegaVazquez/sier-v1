@@ -50,7 +50,7 @@ export class ResumenCMIComponent implements OnInit {
   displayedColumns: string[] = ['Num', 'Vista', 'Fecha_Ini', 'Fecha_Fin', 'NMes1', 'TMes1', 'NMes2', 'TMes2', 'NMes3', 'TMes3', 'Total'];
   dataSource: MatTableDataSource<ResumenCMI>;
 
-  displayedColumsErrors: string[] = ['id', 'Tabla', 'Fecha_Ini', 'Fecha_Fin', 'Error_Datos', 'Campos_null'];
+  displayedColumsErrors: string[] = ['id', 'Tabla', 'Fecha_Ini', 'Fecha_Fin', 'Total', 'Error_Datos', 'Campos_null', 'Total_Incidencias'];
   dataSourceErrors: MatTableDataSource<ValidaDatos>;
 
   baseUrl = environment.baseUrl;
