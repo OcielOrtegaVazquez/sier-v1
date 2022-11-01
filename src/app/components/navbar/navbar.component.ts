@@ -62,8 +62,14 @@ export class NavbarComponent implements OnInit {
                     },
                     {
                         label: 'Vistas PFM', icon: 'pi pi-fw pi-database', routerLink: "/descarga-pfm"
-                    }                    
+                    }
+                                      
                 ]
+            },
+            {
+                label: 'Vacaciones',
+                icon: 'pi pi-pi pi-users',
+                routerLink: "/administrativo"
             }
         ];
 

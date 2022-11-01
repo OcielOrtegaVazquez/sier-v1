@@ -87,6 +87,11 @@ import { ResumenCMIComponent } from './components/resumen-cmi/resumen-cmi.compon
 /* Ngx- Charts */
 import { ChartsModule } from 'ng2-charts';
 import { PFMViewsComponent } from './components/pfmviews/pfmviews.component';
+import { AdministrativoComponent } from './components/administrativo/administrativo.component';
+
+import { NgGanttEditorModule } from 'ng-gantt';
+import { NgxGanttModule } from '@worktile/gantt';
+import { FusionChartsModule } from "angular-fusioncharts";
 
 /* Exportar funcion con datos de la aplicacion en portal Azure */
 export function MSALInstanceFactory(): IPublicClientApplication {
@@ -110,6 +115,16 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
   };
 }
 
+// Import FusionCharts library and chart modules
+import * as FusionCharts from "fusioncharts";
+import * as Charts from "fusioncharts/fusioncharts.charts";
+import * as Gantt from "fusioncharts/fusioncharts.gantt";
+import * as Widgets from "fusioncharts/fusioncharts.widgets.js";
+import * as FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
+// Pass the fusioncharts library and chart modules
+FusionChartsModule.fcRoot(FusionCharts, Charts, Gantt, FusionTheme);
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -129,10 +144,14 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     CmiComponent,
     UsuariosComponent,
     ResumenCMIComponent,
-    PFMViewsComponent
+    PFMViewsComponent,
+    AdministrativoComponent
   ],
   imports: [
     BrowserModule,
+    NgGanttEditorModule,
+    FusionChartsModule,
+    NgxGanttModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -176,6 +195,7 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     NgTerminalModule,
     TerminalModule,
     NgxChildProcessModule,
+   
     SweetAlert2Module.forRoot()
   ],
   providers: [ExcelService,

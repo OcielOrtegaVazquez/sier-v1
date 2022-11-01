@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 /* Importar Form  */
@@ -66,7 +66,14 @@ export class CmiComponent implements OnInit {
 
   value: number;
 
-  constructor(private http: HttpClient, private excelService: ExcelService, private spinnerService: SpinnerService) { }
+  dataSource: Object;
+  title: string;
+  chart: any;
+  height: any;
+
+  constructor(private http: HttpClient, private excelService: ExcelService, private spinnerService: SpinnerService, private zone: NgZone) {
+
+   }
 
   ngOnInit(): void {
     this.cmi = new FormGroup({
