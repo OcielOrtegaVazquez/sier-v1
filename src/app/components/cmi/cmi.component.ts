@@ -10,6 +10,8 @@ import { SpinnerService } from '../../services/spinner.service';
 /* Enviroment */
 import { environment } from 'src/environments/environment';
 
+import { FormBuilder, Validators } from '@angular/forms';
+
 export class Consulta {
   area: string;
   startDate: string;
@@ -71,9 +73,49 @@ export class CmiComponent implements OnInit {
   chart: any;
   height: any;
 
-  constructor(private http: HttpClient, private excelService: ExcelService, private spinnerService: SpinnerService, private zone: NgZone) {
+  /* stepper */
 
-   }
+  periodo: any = '';
+  start: any;
+
+  anioFormGroup = this._formBuilder.group({
+    anio: ['', Validators.required],
+  });
+
+  periodoFormGroup = this._formBuilder.group({
+    periodo: ['', Validators.required],
+  });
+
+  rangoFormGroup1 = this._formBuilder.group({
+    start : ['', Validators.required],  
+  });
+
+  rangoFormGroup2 = this._formBuilder.group({
+    end : ['', Validators.required],
+  });
+
+  isLinear = true;
+  selectedAnio = '';
+  selectedPeriodo = '';
+  date: any;
+  minDate: Date;
+  maxDate: Date;
+  minDate2: Date;
+  maxDate2: Date;
+  /* stepper */
+
+  constructor(private _formBuilder: FormBuilder,
+    private http: HttpClient,
+    private excelService: ExcelService) {
+
+      const currentYear = new Date().getFullYear();
+      this.minDate = new Date();
+      this.maxDate = new Date(currentYear + 0, 8, 30);
+
+      this.minDate2 = new Date();
+      this.maxDate2 = new Date(currentYear + 1, 1, 28);
+
+     }
 
   ngOnInit(): void {
     this.cmi = new FormGroup({
@@ -219,5 +261,7 @@ export class CmiComponent implements OnInit {
         break
     }
   }
+
+
 
 }

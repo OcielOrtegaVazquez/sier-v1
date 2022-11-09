@@ -33,6 +33,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatStepperModule} from '@angular/material/stepper';
 
 /* Importacion para interceptor */
 import { HttpClientModule, HTTP_INTERCEPTORS, HttpInterceptor } from '@angular/common/http';
@@ -149,6 +150,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, Gantt, FusionTheme);
   ],
   imports: [
     BrowserModule,
+    MatStepperModule,
     NgGanttEditorModule,
     FusionChartsModule,
     NgxGanttModule,
