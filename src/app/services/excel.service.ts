@@ -61,12 +61,6 @@ export class ExcelService {
     const sheet = this._workbook.addWorksheet('Formato_Vacaciones_SIER', { pageSetup: { fitToPage: true} } );
     
 
-     sheet.insertRows(4, data);
-
-      sheet.insertRow(5, data);
-
-     sheet.insertRows(6, data);
-    
     /* Print Area */
     sheet.pageSetup.printArea = 'A1:AC48';
     sheet.pageSetup.margins = {
