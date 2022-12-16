@@ -8,6 +8,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { AdministrativoService } from '../../services/administrativo.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import * as FusionCharts from "fusioncharts";
+import { ExcelService } from '../../services/excel.service';
+import { VacacionesTableExcel } from '../../interfaces/vacaciones';
 
 export class VacacionesUsuario {
   id: number;
@@ -237,7 +240,7 @@ export class AdministrativoComponent implements OnInit {
   maxDate2: Date;
   /* stepper */
 
-  constructor(private _formBuilder: FormBuilder, private http: HttpClient, private administrativoService: AdministrativoService) { 
+  constructor(private _formBuilder: FormBuilder, private http: HttpClient, private administrativoService: AdministrativoService, private excelService: ExcelService) { 
     this.dataGrafica();
     const currentYear = new Date().getFullYear();
     this.minDate = new Date();
@@ -349,19 +352,14 @@ export class AdministrativoComponent implements OnInit {
   dataGrafica() {
     this.http.get<any>(`${this.baseUrl}/vacaciones/grafica`).subscribe((res) => {
       this.apiResponseUsers = (res);
-      console.log("Vacaciones Usuarios: " + this.apiResponseUsers);
-      console.log("Data: ");
-
 
       this.http.get<DatosUsuario>(`${this.baseUrl}/vacaciones/grafica/fecha-inicial`).subscribe((res) => {
         this.apiResponseFechaInicial = (res);
         console.log(this.apiResponseFechaInicial);
 
-
         this.http.get<any>(`${this.baseUrl}/vacaciones/grafica/fecha-final`).subscribe((res) => {
           this.apiResponseFechaFinal = (res);
           console.log(this.apiResponseFechaFinal);
-
 
           this.http.get<any>(`${this.baseUrl}/vacaciones/grafica/rango`).subscribe((res) => {
             this.apiResponseRango = (res);
@@ -370,9 +368,9 @@ export class AdministrativoComponent implements OnInit {
             this.dataSourceChart = {
               chart: {
                 theme: "fusion",
-                caption: "Plan Vacacional",
+                caption: "Días Registrados",
                 headerfontsize: "22",
-                subcaption: "Días Registrados",
+                //subcaption: "Días Registrados",
                 dateformat: "dd/mm/yyyy",
                 outputdateformat: "ddds mns yy",
                 ganttwidthpercent: "60",
@@ -388,7 +386,10 @@ export class AdministrativoComponent implements OnInit {
                 gridbordercolor: "#000000",
                 gridborderalpha: "20",
                 slackFillColor: "#e44a00",
-                taskBarFillMix: "light+0"
+                taskBarFillMix: "light+0",
+                exportEnabled: 1,
+                exportFileName: "Plan Vacacional",
+        exportTargetWindow: "_self",
               },
               categories: [
                 {
@@ -635,6 +636,37 @@ export class AdministrativoComponent implements OnInit {
         });
       });
     });
+    
   }
+
+  exportChart(e) {
+    FusionCharts.batchExport({
+      exportFormat: "pdf",
+      exportFileName: "Plan Vacacional"
+    });
+  }
+
+  /* Generar Formato de vacaciones */
+  exportFormato(id: number){
+    console.log("Descargar Formato de Vacaciones");
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' });
+
+    /* Obtener Correo de Usuario */
+    this.http.get<any>("https://graph.microsoft.com/v1.0/me/mail").subscribe((mail) => {
+      this.apiResponse = JSON.stringify(mail.value);
+
+      /* Obtener Vacaciones y mostrar el Tabla  */
+      this.administrativoService.getVacaciones(id).subscribe((res) =>{
+        this.excelService.downloadExcel(res);
+        this.apiResponse = JSON.stringify(res);
+        
+        console.log(this.apiResponse);
+        
+      });
+      
+    });
+  }
+
+
 
 }
